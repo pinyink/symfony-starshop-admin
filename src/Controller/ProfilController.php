@@ -6,15 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
-final class MainController extends AbstractController
+final class ProfilController extends AbstractController
 {
-    #[Route('/dashboard', name: 'app_dashboard', methods:['GET'])]
+    #[Route('/profil', name: 'app_profil', methods:['GET'])]
     public function index(): Response
     {
         $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
         
-        return $this->render('main/index.html.twig', [
-            'controller_name' => 'MainController',
+        return $this->render('profil/index.html.twig', [
+            'controller_name' => 'ProfilController',
         ]);
     }
 }
