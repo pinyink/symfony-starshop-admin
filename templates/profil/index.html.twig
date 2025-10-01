@@ -11,5 +11,53 @@
             </div>
         </div>
     </div>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    {{ form_start(form) }}
+                        {{ form_row(form.email) }}
+                        {{ form_row(form.fullname) }}
+                        {{ form_row(form.foto) }}
+                        <div class="row mb-2">
+                            {% if user.foto == null %}
+                                <div class="col-md-2" id="divcol_path">
+                                    <img src="{{ asset('img/image.jpg') }}" alt="" class="img img-thumbnail img-preview" id="img-preview-path" style="width: 160px; height: 160px;">
+                                </div>
+                            {% else %}
+                                <div class="col-md-2" id="divcol_path">
+                                    <img src="{{ asset(foto_profil_directory ~ user.foto) }}" alt="" class="img img-thumbnail img-preview" id="img-preview-path" style="width: 160px; height: 160px;">
+                                </div>
+                            {% endif %}
+                        </div>
+                        {{ form_row(form.save) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+$(document).ready(function () {
+    $("#profil_foto").change(function(e) {
+        file_select(e, 'path');
+    });
+});
+
+</script>
 {% endblock %}

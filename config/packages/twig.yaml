@@ -1,5 +1,9 @@
 twig:
     file_name_pattern: '*.twig'
+    form_themes: ['bootstrap_5_layout.html.twig']
+    globals:
+        foto_profil_directory: 'uploads/foto_profil/'
+        image_directory: 'uploads/image/'
 
 when@test:
     twig:

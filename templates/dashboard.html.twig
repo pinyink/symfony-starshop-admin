@@ -76,6 +76,47 @@
         <!-- App js-->
         <script src="{{ asset('js/app.js') }}"></script>
 
+        <script>
+            function file_select(event, path) {
+                // Get the selected file
+                const selectedFile = event.target.files[0];
+
+                if (selectedFile) {
+                    // Create a FileReader to read the file
+                    const reader = new FileReader();
+
+                    // When the file is loaded, set the image source
+                    reader.onload = function(e) {
+                        $("#img-preview-"+path).attr("src", e.target.result);
+                    };
+                    reader.readAsDataURL(selectedFile);
+                }
+            }
+
+            function formatRupiah(id) {
+                var angka = $('#'+id).val();
+                if (angka != null) {
+                    var number_string = angka.replace(/[^,\d]/g, "").toString(),
+                    split = number_string.split(","),
+                    sisa = split[0].length % 3,
+                    rupiah = split[0].substr(0, sisa),
+                    ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+                    // tambahkan titik jika yang di input sudah menjadi angka ribuan
+                    if (ribuan) {
+                        separator = sisa ? "." : "";
+                        rupiah += separator + ribuan.join(".");
+                    }
+
+                    rupiah = split[1] != undefined ? rupiah + "," + split[1] : rupiah;
+                } else {
+                    rupiah = 0;
+                }
+                $('#'+id).val(rupiah);
+                return rupiah;
+            }
+        </script>
+
         {% block javascripts %}
         {% endblock %}
         
