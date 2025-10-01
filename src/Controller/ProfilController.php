@@ -4,12 +4,15 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\ProfilType;
+use App\Form\ResetPasswordType;
+use App\Repository\UserRepository;
 use App\Services\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class ProfilController extends AbstractController
@@ -45,6 +48,40 @@ final class ProfilController extends AbstractController
         }
         return $this->render('profil/index.html.twig', [
             'user' => $user,
+            'form' => $form
+        ]);
+    }
+
+    #[Route('/password', name: 'app_password', methods:['GET', 'POST'])]
+    public function password(UserRepository $userRepository, Request $request, UserPasswordHasherInterface $passwordHasher,Security $security)
+    {
+        $user = $security->getUser();
+
+        if (!$user) {
+            throw $this->createAccessDeniedException();
+        }
+
+        $form = $this->createForm(ResetPasswordType::class);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $user = $userRepository->findOneBy(['username' => $user->getUserIdentifier()]);
+            if (!$passwordHasher->isPasswordValid($user, $form->get('current_password')->getData())) {
+                $this->addFlash('error', 'Password Lama Salah');
+                return $this->redirectToRoute('app_password');
+            }
+            $hashedPassword = $passwordHasher->hashPassword(
+                $user,
+                $form->get('new_password')->getData()
+            );
+            $userRepository->upgradePassword($user, $hashedPassword);
+            $this->addFlash('success', 'Update Password Data Berhasil');
+            return $this->redirectToRoute('app_password');
+        } else {
+            if ($form->isSubmitted()) {
+                $this->addFlash('error', 'Update Data Gagal'. $form->getErrors(true, false));
+            }
+        }
+        return $this->render('profil/password.html.twig', [
             'form' => $form
         ]);
     }
