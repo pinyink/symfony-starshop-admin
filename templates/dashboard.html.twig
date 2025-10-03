@@ -33,44 +33,6 @@
         {# javascript #}
         <script src="{{ asset('js/head.js') }}"></script>
 
-    </head>
-
-    <!-- body start -->
-    <body data-menu-color="light" data-sidebar="default">
-
-        <!-- Begin page -->
-        <div id="app-layout">
-            
-            {% include 'partials/dashboard/topbar.html.twig' %}
-            {% include 'partials/dashboard/sidebar.html.twig' %}
-
-            <!-- ============================================================== -->
-            <!-- Start Page Content here -->
-            <!-- ============================================================== -->
-
-            <div class="content-page">
-                {% block body %}{% endblock %}
-
-                <!-- Footer Start -->
-                <footer class="footer">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col fs-13 text-muted text-center">
-                                &copy; <script>document.write(new Date().getFullYear())</script> - Made with <span class="mdi mdi-heart text-danger"></span> by <a href="#!" class="text-reset fw-semibold">Zoyothemes</a> 
-                            </div>
-                        </div>
-                    </div>
-                </footer>
-                <!-- end Footer -->
-
-            </div>
-            <!-- ============================================================== -->
-            <!-- End Page content -->
-            <!-- ============================================================== -->
-
-        </div>
-        <!-- END wrapper -->
-
         <!-- Vendor -->
         <script src="{{ asset('libs/jquery/jquery.min.js') }}"></script>
         <script src="{{ asset('libs/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
@@ -79,9 +41,6 @@
         <script src="{{ asset('libs/waypoints/lib/jquery.waypoints.min.js') }}"></script>
         <script src="{{ asset('libs/jquery.counterup/jquery.counterup.min.js') }}"></script>
         <script src="{{ asset('libs/feather-icons/feather.min.js') }}"></script>
-
-        <!-- App js-->
-        <script src="{{ asset('js/app.js') }}"></script>
         
         {# plugins #}
         <!-- Datatables js -->
@@ -90,19 +49,6 @@
         <!-- dataTables.bootstrap5 -->
         <script src="{{ asset('libs/datatables.net-bs5/js/dataTables.bootstrap5.min.js') }}"></script>
         <script src="{{ asset('libs/datatables.net-buttons/js/dataTables.buttons.min.js') }}"></script>
-
-        <!-- buttons.colVis -->
-        <script src="{{ asset('libs/datatables.net-buttons/js/buttons.colVis.min.js') }}"></script>
-        <script src="{{ asset('libs/datatables.net-buttons/js/buttons.flash.min.js') }}"></script>
-        <script src="{{ asset('libs/datatables.net-buttons/js/buttons.html5.min.js') }}"></script>
-        <script src="{{ asset('libs/datatables.net-buttons/js/buttons.print.min.js') }}"></script>
-
-        <!-- buttons.bootstrap5 -->
-        <script src="{{ asset('libs/datatables.net-buttons-bs5/js/buttons.bootstrap5.min.js') }}"></script>
-
-        <!-- dataTables.keyTable -->
-        <script src="{{ asset('libs/datatables.net-keytable/js/dataTables.keyTable.min.js') }}"></script>
-        <script src="{{ asset('libs/datatables.net-keytable-bs5/js/keyTable.bootstrap5.min.js') }}"></script>
 
         <!-- dataTable.responsive -->
         <script src="{{ asset('libs/datatables.net-responsive/js/dataTables.responsive.min.js') }}"></script>
@@ -157,6 +103,47 @@
 
         {% block javascripts %}
         {% endblock %}
+
+    </head>
+
+    <!-- body start -->
+    <body data-menu-color="light" data-sidebar="default">
+
+        <!-- Begin page -->
+        <div id="app-layout">
+            
+            {% include 'partials/dashboard/topbar.html.twig' %}
+            {% include 'partials/dashboard/sidebar.html.twig' %}
+
+            <!-- ============================================================== -->
+            <!-- Start Page Content here -->
+            <!-- ============================================================== -->
+
+            <div class="content-page">
+                {% block body %}{% endblock %}
+
+                <!-- Footer Start -->
+                <footer class="footer">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col fs-13 text-muted text-center">
+                                &copy; <script>document.write(new Date().getFullYear())</script> - Made with <span class="mdi mdi-heart text-danger"></span> by <a href="#!" class="text-reset fw-semibold">Zoyothemes</a> 
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!-- end Footer -->
+
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Page content -->
+            <!-- ============================================================== -->
+
+        </div>
+        <!-- END wrapper -->
+
+        <!-- App js-->
+        <script src="{{ asset('js/app.js') }}"></script>
         
     </body>
 

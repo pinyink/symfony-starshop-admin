@@ -1,0 +1,32 @@
+<table class="table">
+    <tbody>
+        <tr>
+            <th style="width: 25%;">Id</th>
+            <td style="width: 75%;">{{ user.id }}</td>
+        </tr>
+        <tr>
+            <th>Username</th>
+            <td>{{ user.username }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ user.email }}</td>
+        </tr>
+        <tr>
+            <th>Roles</th>
+            <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+        </tr>
+        <tr>
+            <th>Fullname</th>
+            <td>{{ user.fullname }}</td>
+        </tr>
+        <tr>
+            <th>Foto</th>
+            <td>
+                <img src="{{ user.foto == null ? asset('img/image.jpg') : asset(foto_profil_directory ~ user.foto) }}"
+                    alt="" class="img img-thumbnail img-preview" id="img-preview-path"
+                    style="width: 160px; height: 160px;">
+            </td>
+        </tr>
+    </tbody>
+</table>

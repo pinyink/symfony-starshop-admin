@@ -1,0 +1,40 @@
+{{ form_start(form) }}
+    {{ form_row(form.username)}}
+    {{ form_row(form.email) }}
+    {{ form_row(form.password) }}
+    {{ form_row(form.fullname) }}
+    {{ form_row(form.roles) }}
+    {{ form_row(form.foto) }}
+    <div class="row mb-2">
+        {% if (button_label != 'Update') %}
+            <div class="col-md-2" id="divimage_path">
+                <img src="{{ asset('img/image.jpg') }}" alt="" class="img img-thumbnail img-preview " id="img-preview-path" style="width: 160px; height: 160px;">
+            </div>
+        {% endif %}
+
+        {% if (button_label == 'Update') %}
+            {% if user.foto == null %}
+                <div class="col-md-2" id="divcol_path">
+                    <img src="{{ asset('img/image.jpg') }}" alt="" class="img img-thumbnail img-preview" id="img-preview-path" style="width: 160px; height: 160px;">
+                </div>
+            {% else %}
+                <div class="col-md-2" id="divcol_path">
+                    <img src="{{ asset(foto_profil_directory ~ user.foto) }}" alt="" class="img img-thumbnail img-preview" id="img-preview-path" style="width: 160px; height: 160px;">
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+    <hr>
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+{% block javascripts %}
+<script>
+$(document).ready(function () {
+    $("#user_foto").change(function(e) {
+        file_select(e, 'path');
+    });
+});
+
+</script>
+{% endblock %}
