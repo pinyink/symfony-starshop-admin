@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ade812506d0adcf128613fccc238044a",
+    "content-hash": "50679f3866cbbada59a8f9f158dda3f9",
     "packages": [
         {
             "name": "composer/semver",
@@ -1376,6 +1376,63 @@
                 }
             ],
             "time": "2025-03-24T10:02:05+00:00"
+        },
+        {
+            "name": "olivier127/rbac-bundle",
+            "version": "1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Olivier127/rbac-bundle.git",
+                "reference": "dbaac262a43e35a7fa96eb38e8442c23b4446049"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Olivier127/rbac-bundle/zipball/dbaac262a43e35a7fa96eb38e8442c23b4446049",
+                "reference": "dbaac262a43e35a7fa96eb38e8442c23b4446049",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/doctrine-bundle": "^2.5",
+                "doctrine/orm": "^2.20 | ^3.2",
+                "php": "^8.1",
+                "symfony/framework-bundle": "~6.0|~7.0",
+                "symfony/orm-pack": "^2.4",
+                "symfony/security-bundle": "~6.0|~7.0",
+                "symfony/twig-pack": "^1.0",
+                "webmozart/assert": "^1.10"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "PhpRbacBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Olivier Fouache",
+                    "email": "olivier.fouache@gmail.com"
+                }
+            ],
+            "description": "Symfony PhpRabcBundle allow to use RBAC control access for symfony project",
+            "keywords": [
+                "access-control",
+                "bundle",
+                "owasp",
+                "phprbac.net",
+                "rbac",
+                "role",
+                "security",
+                "symfony"
+            ],
+            "support": {
+                "issues": "https://github.com/Olivier127/rbac-bundle/issues",
+                "source": "https://github.com/Olivier127/rbac-bundle/tree/v1.1.2"
+            },
+            "time": "2025-09-15T12:51:01+00:00"
         },
         {
             "name": "omines/datatables-bundle",
@@ -4854,6 +4911,55 @@
             "time": "2025-08-05T10:16:07+00:00"
         },
         {
+            "name": "symfony/orm-pack",
+            "version": "v2.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/orm-pack.git",
+                "reference": "9d8729016b3a8b0db854c028d15c2dcf4d19b1b4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/orm-pack/zipball/9d8729016b3a8b0db854c028d15c2dcf4d19b1b4",
+                "reference": "9d8729016b3a8b0db854c028d15c2dcf4d19b1b4",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "^3",
+                "doctrine/doctrine-bundle": "*",
+                "doctrine/doctrine-migrations-bundle": "*",
+                "doctrine/orm": "*"
+            },
+            "conflict": {
+                "php": "<8.1"
+            },
+            "type": "symfony-pack",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A pack for the Doctrine ORM",
+            "support": {
+                "issues": "https://github.com/symfony/orm-pack/issues",
+                "source": "https://github.com/symfony/orm-pack/tree/v2.4.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2024-02-13T17:58:44+00:00"
+        },
+        {
             "name": "symfony/password-hasher",
             "version": "v7.3.0",
             "source": {
@@ -7069,6 +7175,51 @@
                 }
             ],
             "time": "2025-09-10T12:00:31+00:00"
+        },
+        {
+            "name": "symfony/twig-pack",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/twig-pack.git",
+                "reference": "08a73e833e07921c464336deb7630f93e85ef930"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/twig-pack/zipball/08a73e833e07921c464336deb7630f93e85ef930",
+                "reference": "08a73e833e07921c464336deb7630f93e85ef930",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/twig-bundle": "*",
+                "twig/extra-bundle": "^2.12|^3.0",
+                "twig/twig": "^2.12|^3.0"
+            },
+            "type": "symfony-pack",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Twig pack for Symfony projects",
+            "support": {
+                "issues": "https://github.com/symfony/twig-pack/issues",
+                "source": "https://github.com/symfony/twig-pack/tree/v1.0.1"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-10-19T08:46:41+00:00"
         },
         {
             "name": "symfony/type-info",
