@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Permission;
+use App\Entity\Role;
 use PhpRbacBundle\Core\Manager\PermissionManager;
 use PhpRbacBundle\Core\Manager\RoleManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,10 +13,12 @@ use Symfony\Component\Routing\Attribute\Route;
 final class MainController extends AbstractController
 {
     private PermissionManager $permissionManager;
+    private RoleManager $roleManager;
 
-    public function __construct(PermissionManager $permissionManager)
+    public function __construct(PermissionManager $permissionManager, RoleManager $roleManager)
     {
         $this->permissionManager = $permissionManager;
+        $this->roleManager = $roleManager;
     }
     
     #[Route('/dashboard', name: 'app_dashboard', methods:['GET'])]
@@ -32,11 +35,23 @@ final class MainController extends AbstractController
     public function coba(): Response
     {
         // Membuat permission
-        $permManager = $this->container->get(PermissionManager::class);
-        $perm = $permManager->add("notepad", "Notepad", PermissionManager::ROOT_ID);
+        $permManager = $this->permissionManager;
+        $perm = $permManager->add("notepad", "Notepad", $this->permissionManager::ROOT_ID);
+
+        $permManager->addPath("/notepad/todolist/read", [
+            'notepad' => 'Notepad',
+            'todolist' => 'Todo list',
+            'read' => 'Read Access'
+        ]);
+
+        $permManager->addPath("/notepad/todolist/write", [
+            'notepad' => 'Notepad',
+            'todolist' => 'Todo list',
+            'write' => 'Write Access'
+        ]);
 
         // Membuat role
-        $roleManager = $this->container->get(RoleManager::class);
+        $roleManager = $this->roleManager;
         $roleManager->addPath("/editor/reviewer", [
             'editor' => 'Editor',
             'reviewer' => 'Reviewer'
