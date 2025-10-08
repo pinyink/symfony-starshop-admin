@@ -4,8 +4,12 @@ namespace App\Controller;
 
 use App\Entity\Permission;
 use App\Entity\Role;
+use App\Entity\User;
+use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use PhpRbacBundle\Core\Manager\PermissionManager;
 use PhpRbacBundle\Core\Manager\RoleManager;
+use PhpRbacBundle\Core\Rbac;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -66,5 +70,42 @@ final class MainController extends AbstractController
         $roleManager->assignPermission($roleManager->getNode($reviewerId), "/notepad/todolist/write");
 
         return new Response('Coba route is working!');
+    }
+
+    #[Route('/role_ke_user', name: 'app_role_to_user', methods:['GET'])]
+    public function roleToUser(EntityManagerInterface $entityManagerInterface): Response
+    {
+        $roleManager = $this->roleManager;
+
+        // Misalkan kita punya user dengan ID 1
+        $userId = 3;
+
+        // Mendapatkan ID role berdasarkan path
+        // $editorRoleId = $roleManager->getPathId("/editor");
+        $reviewerRoleId = $roleManager->getPathId("/editor/reviewer");
+        $roleNode = $roleManager->getNode($reviewerRoleId);
+
+        // Mengaitkan role ke user
+        // $roleManager->assignUser($roleManager->getNode($editorRoleId), $userId);
+        // $roleManager->assignUser($roleManager->getNode($reviewerRoleId), $userId);
+
+        $user = $entityManagerInterface->getRepository(User::class)->find($userId);
+        $user->addRbacRole($roleNode);
+        $entityManagerInterface->persist($user);
+        $entityManagerInterface->flush();
+
+        return new Response('Roles assigned to user successfully!');
+    }
+
+    #[Route('/check_access', name: 'app_check_access', methods: ['GET'])]
+    public function checkAccess(Rbac $rbac): Response
+    {
+        $user = 3;
+        $rbacCtrl = $rbac->hasPermission('/notepad/todolist/read', $user);
+        if ($rbacCtrl) {
+            return new Response('User has access to /notepad/todolist/read');
+        } else {
+            return new Response('User does NOT have access to /notepad/todolist/read');
+        }
     }
 }
