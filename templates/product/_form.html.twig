@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+    {{ form_row(form.nama) }}
+	{{ form_row(form.harga) }}
+    <hr>
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+{% block javascripts %}
+{% endblock %}
