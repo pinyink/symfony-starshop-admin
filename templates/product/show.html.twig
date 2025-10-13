@@ -37,7 +37,10 @@
                     {{ include('product/_detail.html.twig') }}
                     <div class="d-flex justify-content mt-3 gap-1">
                         <a href="{{ path('app_product_edit', { 'id' : product.id}) }}" class="btn btn-info text-white"><i class="fa fa-edit"></i> edit</a>
-                        
+                        <form method="post" id="formdelete" action="{{ path('app_product_delete', {'id': product.id}) }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                            <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -48,4 +51,23 @@
 
 
 {% block javascripts %}
+<script>
+    $('#formdelete').submit(function (e) { 
+        e.preventDefault();
+        Swal.fire({
+            title: "Apa Anda Yakin ?",
+            text: "Mengahapus Data Ini !",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "YA, Hapus !",
+            cancelButtonText: "Batal",
+            }).then((result) => {
+            if (result.isConfirmed) {
+                e.target.submit();
+            }
+        });
+    });
+</script>
 {% endblock %}
