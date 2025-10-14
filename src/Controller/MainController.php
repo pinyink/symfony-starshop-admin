@@ -42,15 +42,15 @@ final class MainController extends AbstractController
         $permManager = $this->permissionManager;
         $perm = $permManager->add("notepad", "Notepad", $this->permissionManager::ROOT_ID);
 
-        $permManager->addPath("/notepad/todolist/read", [
+        $permManager->addPath("/notepad/artikle/read", [
             'notepad' => 'Notepad',
-            'todolist' => 'Todo list',
+            'artikle' => 'artikle',
             'read' => 'Read Access'
         ]);
 
-        $permManager->addPath("/notepad/todolist/write", [
+        $permManager->addPath("/notepad/artikle/write", [
             'notepad' => 'Notepad',
-            'todolist' => 'Todo list',
+            'artikle' => 'Artikle',
             'write' => 'Write Access'
         ]);
 
@@ -66,8 +66,8 @@ final class MainController extends AbstractController
         $reviewerId = $roleManager->getPathId("/editor/reviewer");
 
         $roleManager->assignPermission($roleManager->getNode($editorId), "/notepad");
-        $roleManager->assignPermission($roleManager->getNode($reviewerId), "/notepad/todolist/read");
-        $roleManager->assignPermission($roleManager->getNode($reviewerId), "/notepad/todolist/write");
+        $roleManager->assignPermission($roleManager->getNode($reviewerId), "/notepad/artikle/read");
+        $roleManager->assignPermission($roleManager->getNode($reviewerId), "/notepad/artikle/write");
 
         return new Response('Coba route is working!');
     }

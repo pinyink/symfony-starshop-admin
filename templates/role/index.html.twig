@@ -2,40 +2,175 @@
 
 {% block title %}Role index{% endblock %}
 
+{% block stylesheets %}
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/datatables/1.10.21/css/dataTables.bootstrap.min.css" integrity="sha512-BMbq2It2D3J17/C7aRklzOODG1IQ3+MHw3ifzBHMBwGO/0yUqYmsStgBjI0z5EYlaDEFnvYV7gNYdD3vFLRKsA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--end::Vendor Stylesheets-->
+    
+    <link rel=”stylesheet” href=”https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css” />
+{% endblock %}
+
 {% block body %}
-    <h1>Role index</h1>
+    <div class="container">
+        <div class="mt-5 mb-5 d-flex align-items-center justify-content-between">
+            <h1>Role</h1>
+            <div class="d-flex">
+                <button class="btn btn-primary" onclick="tambah()">Tambah</button>
+            </div>
+        </div>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Code</th>
-                <th>Description</th>
-                <th>Left</th>
-                <th>Right</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for role in roles %}
-            <tr>
-                <td>{{ role.id }}</td>
-                <td>{{ role.code }}</td>
-                <td>{{ role.description }}</td>
-                <td>{{ role.left }}</td>
-                <td>{{ role.right }}</td>
-                <td>
-                    <a href="{{ path('app_role_show', {'id': role.id}) }}">show</a>
-                    <a href="{{ path('app_role_edit', {'id': role.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="6">no records found</td>
-            </tr>
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
         {% endfor %}
-        </tbody>
-    </table>
+        {% for message in app.flashes('error') %}
+            <div class="alert alert-danger">
+                {{ message }}
+            </div>
+        {% endfor %}
+        
+        <div class="table-responsive bg-white rounded-2">
+            <table id="tbl_list" class="table table-row-dashed table-row-gray-200 align-middle gs-0 gy-4 table-bordered">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Code</th>
+                        <th>Description</th>
+                        <th>##</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for role in roles %}
+                    <tr>
+                        <td>{{ role.id }}</td>
+                        <td>{{ role.code }}</td>
+                        <td>{{ role.description }}</td>
+                        <td>
+                            <button class="btn btn-sm btn-info" onclick="edit_data({{ role.id }}, '{{ role.code }}', '{{ role.description}}')">Edit</button>
+                            <button class="btn btn-sm btn-danger" onclick="delete_data({{ role.id }})">Delete</button>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="6">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
 
-    <a href="{{ path('app_role_new') }}">Create new</a>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <form id="form" method="post" action="{{ path('app_role_save') }}">
+                <input type="hidden" name="_token" value="{{ csrf_token('add_edit') }}">
+                <input type="hidden" name="method" value="">
+                <input type="hidden" name="id" value="">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group mb-3">
+                            <label for="code">Code</label>
+                            <input type="text" class="form-control" name="code">
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="desc">Description</label>
+                            <input type="text" class="form-control" name="desc">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" id="button-save" class="btn btn-primary">Save</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <!-- Optional JavaScript; choose one of the two! -->
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
+    </script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.5/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.5/js/dataTables.bootstrap5.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        function tambah() {
+            $('#exampleModalLabel').html('Tambah Role');
+            $('#form')[0].reset();
+            $('input[name="method"]').val('tambah');
+            $('#exampleModal').modal('show');
+        }
+
+        function edit_data(id, code, desc) {
+            $('#exampleModalLabel').html('Edit Role');
+            $('input[name="method"]').val('edit');
+            $('input[name="id"]').val(id);
+            $('input[name="code"]').val(code);
+            $('input[name="desc"]').val(desc);
+            $('#exampleModal').modal('show');
+        }
+
+        function delete_data(id) {
+            Swal.fire({
+                title: "Delete ?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: "#e81729",
+                confirmButtonText: "Delete",
+                denyButtonText: `Don't Delete`
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: "delete",
+                        url: "{{ path('app_role_delete') }}",
+                        data: {'_token' : "{{ csrf_token('hapus') }}", 'id' : id},
+                        dataType: "json",
+                        success: function (response) {
+                            Swal.fire({
+                                icon: "success",
+                                title: response.message,
+                                showConfirmButton: true,
+                                timer: 1500
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.reload();
+                                }
+                            });
+                        },
+                        error: function(jqXHR) {
+                            console.log(jqXHR.responseText);
+                        }
+                    });
+                }
+            });
+        }
+
+    </script>
 {% endblock %}
