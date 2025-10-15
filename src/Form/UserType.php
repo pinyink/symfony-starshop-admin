@@ -2,7 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Role;
 use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -29,14 +32,27 @@ class UserType extends AbstractType
             ->add('email', EmailType::class, [
                 'label' => 'Email'
             ])
-            ->add('roles', ChoiceType::class, [
-                'choices' => [
-                    'Pilih Satu' => '',
-                    'Administrator' => 'ROLE_ADMIN',
-                    'User' => 'ROLE_USER'
-                ],
+            // ->add('roles', ChoiceType::class, [
+            //     'choices' => [
+            //         'Pilih Satu' => '',
+            //         'Administrator' => 'ROLE_ADMIN',
+            //         'User' => 'ROLE_USER'
+            //     ],
+            //     'mapped' => false,
+            //     'label' => 'Privilages',
+            // ])
+            ->add('roles', EntityType::class, [
+                'class' => Role::class,
+                'placeholder' => 'Pilih Satu',
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('r')
+                        ->where('r.parent = :parentId')
+                        ->setParameter('parentId', 1)
+                        ->orderBy('r.id', 'ASC');
+                },
+                'choice_label' => 'description',
+                'label' => 'Role',
                 'mapped' => false,
-                'label' => 'Privilages',
             ])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,

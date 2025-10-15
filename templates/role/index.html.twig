@@ -52,6 +52,7 @@
                         <td>
                             <button class="btn btn-sm btn-info" onclick="edit_data({{ role.id }}, '{{ role.code }}', '{{ role.description}}')">Edit</button>
                             <button class="btn btn-sm btn-danger" onclick="delete_data({{ role.id }})">Delete</button>
+                            <a href="{{ path('app_role_permission', {'id': role.id}) }}" class="btn btn-sm btn-primary">Permission</a>
                         </td>
                     </tr>
                 {% else %}

@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Permission;
 use App\Entity\Role;
 use App\Form\RoleType;
 use Doctrine\ORM\EntityManagerInterface;
+use PhpRbacBundle\Core\Manager\PermissionManager;
 use PhpRbacBundle\Core\Manager\RoleManager;
 use PhpRbacBundle\Repository\RoleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -40,7 +42,7 @@ final class RoleController extends AbstractController
                 $data['code'] => $data['desc']
             ]);
             $this->addFlash('success', 'Role berhasil ditambahkan');
-            $this->redirectToRoute('app_role_index');
+            return $this->redirectToRoute('app_role_index');
         } elseif ($data['method'] == 'edit') {
             // $role = $roleManager->getNode($data['id']);
             // if (!$role) {
@@ -60,7 +62,7 @@ final class RoleController extends AbstractController
             $entity->persist($role);
             $entity->flush();
             $this->addFlash('success', 'Role berhasil diupdate');
-            $this->redirectToRoute('app_role_index');
+            return $this->redirectToRoute('app_role_index');
         } else {
             $this->addFlash('error', 'Method tidak valid');
         }
@@ -82,13 +84,87 @@ final class RoleController extends AbstractController
             return $this->json(['status' => 'error', 'message' => 'Role tidak ditemukan'], 404);
         }
 
-        // Cek apakah ada user yang menggunakan role ini
-        // $count = $entity->getRepository(Role::class)->count(['roleId' => $data['id']]);
-        // if ($count > 0) {
-        //     return $this->json(['status' => 'error', 'message' => 'Role ini sedang digunakan oleh user'], 400);
-        // }
-
         $roleManager->remove($role);
         return $this->json(['status' => 'success', 'message' => 'Role berhasil dihapus'], 200);
+    }
+
+    #[Route('/permission/{id}', name: 'app_role_permission', methods: ['GET','POST'])]
+    public function permission($id, RoleManager $roleManager, EntityManagerInterface $entityManager, PermissionManager $permissionManager)
+    {
+        $role = $entityManager->getRepository(Role::class)->find($id);
+        if (!$role) {
+            $this->addFlash('error', 'Role tidak ditemukan');
+            return $this->redirectToRoute('app_role_index');
+        }
+
+        $data = [];
+        $query = $entityManager->getRepository(Permission::class)->findBy(['parent' => 1]);
+        foreach ($query as $key => $value) {
+            $array = [
+                'id' => $value->getId(),
+                'code' => $value->getCode(),
+                'description' => $value->getDescription(),
+            ];
+            $queryChild = $entityManager->getRepository(Permission::class)->findBy(['parent' => $value->getId()]);
+            $child = [];
+            foreach ($queryChild as $k => $v) {
+                $perm = $permissionManager->getNode($v->getId());
+                if ($roleManager->hasPermission($id, $v->getId())) {
+                    $checked = 'checked';
+                } else {
+                    $checked = '';
+                }
+                $child[] = [
+                    'id' => $v->getId(),
+                    'code' => $v->getCode(),
+                    'description' => $v->getDescription(),
+                    'checked' => $checked
+                ];
+            }
+            $array['child'] = $child;
+            array_push($data, $array);
+        }
+
+        return $this->render('role/permission.html.twig', [
+            'controller_name' => 'PermissionController',
+            'role' => $role,
+            'permissions' => $data,
+        ]);
+    }
+
+    #[Route('/add_permission/{id}', name: 'app_role_add_permission', methods: ['POST'])]
+    public function addPermission($id, Request $request, RoleManager $roleManager, PermissionManager $permissionManager)
+    {
+        if (!$this->isCsrfTokenValid('add_permission', $request->request->get('_token'))) {
+            return $this->json(['status' => 'error', 'message' => 'Token tidak valid'], 403);
+        }
+
+        $data = $request->request->all();
+        $roleId = $roleManager->getNode($data['role_id']);
+        if (!$roleId) {
+            return $this->json(['status' => 'error', 'message' => 'Role tidak ditemukan'], 404);
+        }
+
+        $roleManager->assignPermission($roleId, $permissionManager->getPath($data['permission_id']));
+
+        return $this->json(['status' => 'success', 'message' => 'Permission berhasil ditambahkan'], 200);
+    }
+
+    #[Route('/remove_permission/{id}', name: 'app_role_remove_permission', methods: ['POST'])]
+    public function removePermission($id, Request $request, RoleManager $roleManager, PermissionManager $permissionManager)
+    {
+        if (!$this->isCsrfTokenValid('remove_permission', $request->request->get('_token'))) {
+            return $this->json(['status' => 'error', 'message' => 'Token tidak valid'], 403);
+        }
+
+        $data = $request->request->all();
+        $roleId = $roleManager->getNode($data['role_id']);
+        if (!$roleId) {
+            return $this->json(['status' => 'error', 'message' => 'Role tidak ditemukan'], 404);
+        }
+
+        $roleManager->unassignPermission($roleId, $permissionManager->getPath($data['permission_id']));
+
+        return $this->json(['status' => 'success', 'message' => 'Permission berhasil dihapus'], 200);
     }
 }

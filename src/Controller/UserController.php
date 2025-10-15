@@ -10,6 +10,7 @@ use Omines\DataTablesBundle\Adapter\Doctrine\ORMAdapter;
 use Omines\DataTablesBundle\Column\TextColumn;
 use Omines\DataTablesBundle\Column\TwigStringColumn;
 use Omines\DataTablesBundle\DataTableFactory;
+use PhpRbacBundle\Core\Manager\RoleManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -48,7 +49,7 @@ final class UserController extends AbstractController
     }
 
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, FileUploader $fileUploader)
+    public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, FileUploader $fileUploader, RoleManager $roleManager)
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -71,7 +72,9 @@ final class UserController extends AbstractController
             }
             $user->setEmail($data['user']['email']);
             $user->setFullname($data['user']['fullname']);
-            $user->setRoles([$data['user']['roles']]);
+            $user->setRoles(['ROLE_USER']);
+            $role = $roleManager->getNode($data['user']['roles']);
+            $user->addRbacRole($role);
             $entityManager->persist($user);
             $entityManager->flush();
             $this->addFlash('success', 'Tambah Data Berhasil');
@@ -85,7 +88,7 @@ final class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, FileUploader $fileUploader): Response
+    public function edit(Request $request, User $user, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, FileUploader $fileUploader, RoleManager $roleManager): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -110,7 +113,12 @@ final class UserController extends AbstractController
             }
             $user->setEmail($data['user']['email']);
             $user->setFullname($data['user']['fullname']);
-            $user->setRoles([$data['user']['roles']]);
+
+            $user->getRbacRoles()->clear();
+            $role = $roleManager->getNode($data['user']['roles']);
+            $user->addRbacRole($role);
+
+            $entityManager->persist($user);
             $entityManager->flush();
             $this->addFlash('success', 'Edit Data Berhasil');
             return $this->redirectToRoute('app_user_edit', ['id' => $user->getId()], Response::HTTP_SEE_OTHER);
