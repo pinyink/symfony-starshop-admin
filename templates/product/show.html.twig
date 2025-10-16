@@ -36,11 +36,15 @@
                 <div class="card-body">
                     {{ include('product/_detail.html.twig') }}
                     <div class="d-flex justify-content mt-3 gap-1">
+                        {% if has_permission('/product/update') %}
                         <a href="{{ path('app_product_edit', { 'id' : product.id}) }}" class="btn btn-info text-white"><i class="fa fa-edit"></i> edit</a>
+                        {% endif %}
+                        {% if has_permission('/product/delete') %}
                         <form method="post" id="formdelete" action="{{ path('app_product_delete', {'id': product.id}) }}">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
                             <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
                         </form>
+                        {% endif %}
                     </div>
                 </div>
             </div>

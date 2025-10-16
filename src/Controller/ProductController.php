@@ -11,13 +11,15 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Omines\DataTablesBundle\Adapter\Doctrine\ORMAdapter;
-use Omines\DataTablesBundle\Column\TwigStringColumn;
+use Omines\DataTablesBundle\Column\TwigColumn;
 use Omines\DataTablesBundle\DataTableFactory;
+use PhpRbacBundle\Attribute\AccessControl as RBAC;
 use Omines\DataTablesBundle\Column\TextColumn;
 
 #[Route('/product')]
 final class ProductController extends AbstractController
 {
+    #[RBAC\IsGranted("/product/read")]
     #[Route(name: 'app_product_index', methods: ['GET', 'POST'])]
     public function index(DataTableFactory $dataTableFactory, Request $request): Response
     {
@@ -33,8 +35,8 @@ final class ProductController extends AbstractController
             ])
             ->add('nama', TextColumn::class, ['label' => 'Nama'])
 			->add('harga', TextColumn::class, ['label' => 'Harga'])
-            ->add('link', TwigStringColumn::class, [
-                'template' => '<a href="{{ path(\'app_product_show\', {id : row.id}) }}" class="btn btn-sm btn-primary text-white">Detail</a> <a href="{{ path(\'app_product_edit\', {id : row.id}) }}" class="btn btn-sm btn-info text-white">Edit</a>',
+            ->add('link', TwigColumn::class, [
+                'template' => 'product/button.html.twig',
                 'label' => 'Aksi'
             ])
             ->createAdapter(ORMAdapter::class, [
@@ -51,6 +53,7 @@ final class ProductController extends AbstractController
         ]);
     }
 
+    #[RBAC\IsGranted("/product/add")]
     #[Route('/new', name: 'app_product_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -72,6 +75,7 @@ final class ProductController extends AbstractController
         ]);
     }
 
+    #[RBAC\IsGranted("/product/read")]
     #[Route('/{id}', name: 'app_product_show', methods: ['GET'])]
     public function show(Product $product): Response
     {
@@ -80,6 +84,7 @@ final class ProductController extends AbstractController
         ]);
     }
 
+    #[RBAC\IsGranted("/product/update")]
     #[Route('/{id}/edit', name: 'app_product_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {
@@ -99,6 +104,7 @@ final class ProductController extends AbstractController
         ]);
     }
 
+    #[RBAC\IsGranted("/product/delete")]
     #[Route('/{id}', name: 'app_product_delete', methods: ['POST'])]
     public function delete(Request $request, Product $product, EntityManagerInterface $entityManager): Response
     {

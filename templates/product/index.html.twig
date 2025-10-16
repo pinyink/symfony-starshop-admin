@@ -39,7 +39,9 @@
                         <h5 class="card-title mb-0">Data Product</h5>
 
                         <div class="ms-auto"> 
-                            <a href="{{ path('app_product_new') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                            {% if has_permission('/product/add') %}
+                                <a href="{{ path('app_product_new') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

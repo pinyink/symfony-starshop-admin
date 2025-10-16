@@ -9,7 +9,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use PhpRbacBundle\Core\Manager\PermissionManager;
 use PhpRbacBundle\Core\Manager\RoleManager;
-use PhpRbacBundle\Core\Rbac;
+use PhpRbacBundle\Attribute\AccessControl as RBAC;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -97,15 +97,18 @@ final class MainController extends AbstractController
         return new Response('Roles assigned to user successfully!');
     }
 
+    #[Rbac\IsGranted("/notepad/todolist")]
     #[Route('/check_access', name: 'app_check_access', methods: ['GET'])]
-    public function checkAccess(Rbac $rbac): Response
+    public function checkAccess(): Response
     {
-        $user = 3;
-        $rbacCtrl = $rbac->hasPermission('/notepad/todolist/read', $user);
-        if ($rbacCtrl) {
-            return new Response('User has access to /notepad/todolist/read');
-        } else {
-            return new Response('User does NOT have access to /notepad/todolist/read');
-        }
+        // $user = 3;
+        $user = $this->getUser();
+        // $rbacCtrl = $rbac->hasPermission('/notepad/todolist/read', $user);
+        // if ($rbacCtrl) {
+        //     return new Response('User has access to /notepad/todolist/read');
+        // } else {
+        //     return new Response('User does NOT have access to /notepad/todolist/read');
+        // }
+        return new Response('User '.$user->getUsername().' has access to /notepad/todolist');
     }
 }
