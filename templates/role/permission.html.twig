@@ -105,16 +105,17 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        
-        $( ".checkbox" ).on( "click", function() {
-            var val = $(this).val();
-            if ($( this ).is(":checked")) {
-                console.log("checked "+val);
-                add_permission(val);
-            } else {
-                console.log("unchecked " + val);
-                remove_permission(val);
-            }
+        $(document).ready(function () {
+            $( ".checkbox" ).on( "click", function() {
+                var val = $(this).val();
+                if ($( this ).is(":checked")) {
+                    console.log("checked "+val);
+                    add_permission(val);
+                } else {
+                    console.log("unchecked " + val);
+                    remove_permission(val);
+                }
+            });
         });
 
         function add_permission(id) {
