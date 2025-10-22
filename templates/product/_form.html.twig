@@ -1,9 +1,13 @@
 {{ form_start(form) }}
     {{ form_row(form.nama) }}
-	{{ form_row(form.harga) }}
+	{{ form_row(form.harga, {'attr': {'data-type': 'rupiah'}}) }}
     <hr>
     <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
 
 {% block javascripts %}
+    <script>
+        // You can add custom JavaScript here if needed
+        
+    </script>
 {% endblock %}

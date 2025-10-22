@@ -46,7 +46,20 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div id="table">Loading...</div>
+                    <div class="table-responsive">
+                        <table id="table" class="table table-bordered table-striped w-100">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama Product</th>
+									<th>Harga</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -56,12 +69,27 @@
 
 {% block javascripts %}
 <script>
-$(function() {
-    $('#table').initDataTables({{ datatable_settings(datatable) }}, 
-        {
-            searching: true,
-        }
-    );
+$(document).ready(function () {
+    var table = $('#table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: '{{ path('app_product_ajax') }}',
+            type: 'GET',
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('Error fetching data: ' + jqXHR.responseText);
+            }
+        },
+        columns: [
+            { data: 'no', orderable: false, searchable: false },
+			{ data: 'nama' },
+			{ data: 'harga' },
+			{ data: 'actions', orderable: false, searchable: false }
+        ],
+        pageLength: 10,
+        order: [[0, 'asc']],
+        responsive: true
+    });
 });
 </script>
 {% endblock %}

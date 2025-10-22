@@ -1,15 +1,14 @@
 <table class="table table-bordered table-striped">
     <tbody>
-                    
+                            
         <tr>
             <th style="width: 25%;">Nama Product</th>
             <td style="width: 75%;">{{ product.nama }}</td>
         </tr>
-                    
-        <tr>
+                                <tr>
             <th style="width: 25%;">Harga</th>
-            <td style="width: 75%;">{{ product.harga }}</td>
+            <td style="width: 75%;">{{ product.harga|rupiah }}</td>
         </tr>
-                
+                        
     </tbody>
 </table>

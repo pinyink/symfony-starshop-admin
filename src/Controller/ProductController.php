@@ -4,52 +4,58 @@ namespace App\Controller;
 
 use App\Entity\Product;
 use App\Form\ProductType;
-use App\Repository\ProductRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
-use Omines\DataTablesBundle\Adapter\Doctrine\ORMAdapter;
-use Omines\DataTablesBundle\Column\TwigColumn;
-use Omines\DataTablesBundle\DataTableFactory;
 use PhpRbacBundle\Attribute\AccessControl as RBAC;
-use Omines\DataTablesBundle\Column\TextColumn;
+use App\Services\Datatable;
+
 
 #[Route('/product')]
 final class ProductController extends AbstractController
 {
     #[RBAC\IsGranted("/product/read")]
     #[Route(name: 'app_product_index', methods: ['GET', 'POST'])]
-    public function index(DataTableFactory $dataTableFactory, Request $request): Response
+    public function index(): Response
     {
-        $table = $dataTableFactory->create()
-            ->add('no', TextColumn::class, [
-                'label' => 'No', 
-                'className' => 'text-center', 
-                'orderable' => false, 
-                'searchable' => false,
-                'render' => function() use (&$counter, $request) {
-                    return ++$counter;
-                }
-            ])
-            ->add('nama', TextColumn::class, ['label' => 'Nama'])
-			->add('harga', TextColumn::class, ['label' => 'Harga'])
-            ->add('link', TwigColumn::class, [
-                'template' => 'product/button.html.twig',
-                'label' => 'Aksi'
-            ])
-            ->createAdapter(ORMAdapter::class, [
-                'entity' => Product::class,
-            ])
-            ->handleRequest($request);
+        return $this->render('product/index.html.twig', [
+        ]);
+    }
 
-        if ($table->isCallback()) {
-            return $table->getResponse();
+    #[RBAC\IsGranted("/product/read")]
+    #[Route('/ajax', name: 'app_product_ajax', methods: ['GET', 'POST'])]
+    public function ajax(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $datatable = new Datatable($request);
+        $datatable->setColumns(["u.nama", "u.harga"])
+                  ->setOrderColumn('u.id')
+                  ->setQueryBuilder(
+                      $entityManager->createQueryBuilder()
+                          ->select('u.id, u.nama, u.harga')
+                          ->from('App\Entity\Product', 'u')
+                  )
+                  ->setCounterBy('u.id');
+        $table = $datatable->create();
+        
+        $no = $table['start'] + 1;
+        $data = [];
+        foreach ($table['results'] as $row) {
+            $data[] = [
+                'no' => $no++,
+                'id' => $row['id'],
+                'nama' => $row['nama'],
+				'harga' => 'Rp ' . number_format($row['harga'], 2, ',', '.'),
+                'actions' => $this->renderView('product/button.html.twig', ['id' => $row['id']]),
+            ];
         }
 
-        return $this->render('product/index.html.twig', [
-            'datatable' => $table,
+        return $this->json([
+            'draw' => $table['draw'],
+            'recordsTotal' => $table['recordsTotal'],
+            'recordsFiltered' => $table['recordsFiltered'],
+            'data' => $data,
         ]);
     }
 
@@ -62,6 +68,7 @@ final class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $entityManager->persist($product);
             $entityManager->flush();
 
@@ -92,6 +99,7 @@ final class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $entityManager->flush();
 
             $this->addFlash('success', 'Update Data Berhasil');

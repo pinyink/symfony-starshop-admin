@@ -1,4 +1,4 @@
-<a href="{{ path('app_product_show', {id : row.id}) }}" class="btn btn-sm btn-primary text-white mr-1">Detail</a>
+<a href="{{ path('app_product_show', {id : id}) }}" class="btn btn-sm btn-primary text-white mr-1">Detail</a>
 {% if has_permission('/product/update') %}
-<a href="{{ path('app_product_edit', {id : row.id}) }}" class="btn btn-sm btn-info text-white">Edit</a>
+<a href="{{ path('app_product_edit', {id : id}) }}" class="btn btn-sm btn-info text-white">Edit</a>
 {% endif %}
