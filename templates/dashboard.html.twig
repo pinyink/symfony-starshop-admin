@@ -25,6 +25,7 @@
         <link href="{{ asset('libs/datatables.net-keytable-bs5/css/keyTable.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('libs/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
         <link href="{{ asset('libs/datatables.net-select-bs5/css/select.bootstrap5.min.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('libs/flatpickr/flatpickr.min.css') }}" rel="stylesheet" type="text/css" />
 
         {% block stylesheets %}
         {% endblock %}
@@ -58,6 +59,8 @@
         <script src="{{ asset('libs/datatables.net-select-bs5/js/select.bootstrap5.min.js') }}"></script>
         
         <script src="{{ asset('bundles/datatables/js/datatables.js') }}"></script>
+
+        <script src="{{ asset('libs/flatpickr/flatpickr.min.js') }}"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -105,6 +108,10 @@
                 $('input[data-type="rupiah"]').on('input', function() {
                     let value = $(this).val().replace(/[^\d]/g, '');
                     $(this).val(value.replace(/\B(?=(\d{3})+(?!\d))/g, "."));
+                });
+
+                flatpickr('.datepicker', {
+                    dateFormat: "d-m-Y", // ✅ format dd-mm-yyyy
                 });
             });
         </script>

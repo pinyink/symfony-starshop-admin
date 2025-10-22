@@ -19,6 +19,9 @@ class Product
     #[ORM\Column(nullable: true)]
     private ?int $harga = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?\DateTime $tanggal = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class Product
     public function setHarga(?int $harga): static
     {
         $this->harga = $harga;
+
+        return $this;
+    }
+
+    public function getTanggal(): ?\DateTime
+    {
+        return $this->tanggal;
+    }
+
+    public function setTanggal(?\DateTime $tanggal): static
+    {
+        $this->tanggal = $tanggal;
 
         return $this;
     }

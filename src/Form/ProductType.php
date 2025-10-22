@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Form\DataTransformer\RupiahTransformer;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class ProductType extends AbstractType
 {
@@ -16,6 +17,7 @@ class ProductType extends AbstractType
         $builder
         ->add('nama', TextType::class, [ 'label' => 'Nama Product', 'required' => true ])
 			->add('harga', TextType::class, [ 'label' => 'Harga', 'required' => true ])
+			->add('tanggal', DateType::class, [ 'widget' => 'single_text', 'label' => 'Tanggal', 'html5' => false, 'format' => 'dd-mm-yyyy', 'attr' => [ 'class' => 'form-control datepicker', 'placeholder' => 'dd-mm-yyyy', ]]);
         ;
         $builder->get('harga')->addModelTransformer(new RupiahTransformer());
     }
