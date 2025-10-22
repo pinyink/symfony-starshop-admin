@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use App\Form\DataTransformer\RupiahTransformer;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 class ProductType extends AbstractType
 {
@@ -17,7 +18,8 @@ class ProductType extends AbstractType
         $builder
         ->add('nama', TextType::class, [ 'label' => 'Nama Product', 'required' => true ])
 			->add('harga', TextType::class, [ 'label' => 'Harga', 'required' => true ])
-			->add('tanggal', DateType::class, [ 'widget' => 'single_text', 'label' => 'Tanggal', 'html5' => false, 'format' => 'dd-mm-yyyy', 'attr' => [ 'class' => 'form-control datepicker', 'placeholder' => 'dd-mm-yyyy', ]]);
+			->add('tanggal', DateType::class, [ 'widget' => 'single_text', 'label' => 'Tanggal', 'html5' => false, 'format' => 'dd-mm-yyyy', 'attr' => [ 'class' => 'form-control datepicker', 'placeholder' => 'dd-mm-yyyy']])
+			->add('tahun', IntegerType::class, [ 'label' => 'Tahun', 'required' => true ])
         ;
         $builder->get('harga')->addModelTransformer(new RupiahTransformer());
     }
@@ -33,7 +35,7 @@ class ProductType extends AbstractType
             // an arbitrary string used to generate the value of the token
             // using a different string for each form improves its security
             // when using stateful tokens (which is the default)
-            'csrf_token_id'   => 'user_item',
+            'csrf_token_id'   => 'product_item',
         ]);
     }
 }

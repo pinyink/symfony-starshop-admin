@@ -29,11 +29,11 @@ final class ProductController extends AbstractController
     public function ajax(Request $request, EntityManagerInterface $entityManager): Response
     {
         $datatable = new Datatable($request);
-        $datatable->setColumns(["u.nama", "u.harga", "u.tanggal"])
+        $datatable->setColumns(["u.nama", "u.harga", "u.tanggal", "u.tahun"])
                   ->setOrderColumn('u.id')
                   ->setQueryBuilder(
                       $entityManager->createQueryBuilder()
-                          ->select('u.id, u.nama, u.harga, u.tanggal')
+                          ->select('u.id, u.nama, u.harga, u.tanggal, u.tahun')
                           ->from('App\Entity\Product', 'u')
                   )
                   ->setCounterBy('u.id');
@@ -48,6 +48,7 @@ final class ProductController extends AbstractController
                 'nama' => $row['nama'],
 				'harga' => 'Rp ' . number_format($row['harga'], 2, ',', '.'),
 				'tanggal' => $row['tanggal'],
+				'tahun' => $row['tahun'],
                 'actions' => $this->renderView('product/button.html.twig', ['id' => $row['id']]),
             ];
         }

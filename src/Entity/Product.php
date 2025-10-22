@@ -22,6 +22,9 @@ class Product
     #[ORM\Column(nullable: true)]
     private ?\DateTime $tanggal = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?int $tahun = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Product
     public function setTanggal(?\DateTime $tanggal): static
     {
         $this->tanggal = $tanggal;
+
+        return $this;
+    }
+
+    public function getTahun(): ?int
+    {
+        return $this->tahun;
+    }
+
+    public function setTahun(?int $tahun): static
+    {
+        $this->tahun = $tahun;
 
         return $this;
     }
