@@ -8,6 +8,16 @@ doctrine:
 
         profiling_collect_backtrace: '%kernel.debug%'
         use_savepoints: true
+
+        types:
+            geometry:            LongitudeOne\Spatial\DBAL\Types\GeometryType
+            linestring: LongitudeOne\Spatial\DBAL\Types\Geometry\LineStringType
+            point:      LongitudeOne\Spatial\DBAL\Types\Geometry\PointType
+            polygon:    LongitudeOne\Spatial\DBAL\Types\Geometry\PolygonType
+            multilinestring: LongitudeOne\Spatial\DBAL\Types\Geometry\MultiLineStringType
+            multipoint:      LongitudeOne\Spatial\DBAL\Types\Geometry\MultiPointType
+            multipolygon:    LongitudeOne\Spatial\DBAL\Types\Geometry\MultiPolygonType
+
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
