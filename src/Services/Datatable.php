@@ -32,7 +32,7 @@ class Datatable
         $order = $this->request->query->all('order');
         $orderColumnIndex = $order[0]['column'] ?? 0;
         $orderDir = $order[0]['dir'] ?? 'asc';
-        $orderColumn = $columns[$orderColumnIndex] ?? $this->orderColumn;
+        $orderColumn = $this->columns[$orderColumnIndex] ?? $this->orderColumn;
 
         $db = $this->queryBuilder;
         if (!empty($searchValue)) {
