@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use PhpRbacBundle\Attribute\AccessControl as RBAC;
 use App\Services\Datatable;
-
+use DateTime;
 
 #[Route('/product')]
 final class ProductController extends AbstractController
@@ -29,11 +29,11 @@ final class ProductController extends AbstractController
     public function ajax(Request $request, EntityManagerInterface $entityManager): Response
     {
         $datatable = new Datatable($request);
-        $datatable->setColumns(["u.nama", "u.harga", "u.tanggal", "u.tahun"])
+        $datatable->setColumns([null, "u.nama", "u.harga", "u.tanggal", "u.tahun"])
                   ->setOrderColumn('u.id')
                   ->setQueryBuilder(
                       $entityManager->createQueryBuilder()
-                          ->select('u.id, u.nama, u.harga, u.tanggal, u.tahun')
+                          ->select("u.id, u.nama, u.harga, u.tahun, DATE_FORMAT(u.tanggal, '%d-%m-%Y') AS tanggal")
                           ->from('App\Entity\Product', 'u')
                   )
                   ->setCounterBy('u.id');
@@ -42,6 +42,7 @@ final class ProductController extends AbstractController
         $no = $table['start'] + 1;
         $data = [];
         foreach ($table['results'] as $row) {
+            // $date = new DateTime($row['tanggal']);
             $data[] = [
                 'no' => $no++,
                 'id' => $row['id'],
