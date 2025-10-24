@@ -13,6 +13,8 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use App\Entity\Categories;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 
 class ProductType extends AbstractType
 {
@@ -23,10 +25,36 @@ class ProductType extends AbstractType
 			->add('harga', TextType::class, [ 'label' => 'Harga', 'required' => true ])
 			->add('tanggal', DateType::class, [ 'widget' => 'single_text', 'label' => 'Tanggal', 'html5' => false, 'format' => 'dd-mm-yyyy', 'attr' => [ 'class' => 'form-control datepicker', 'placeholder' => 'dd-mm-yyyy']])
 			->add('tahun', IntegerType::class, [ 'label' => 'Tahun', 'required' => true ])
-			->add('category', EntityType::class, [ 'class' => Categories::class, 'label' => 'Categories', 'required' => true, 'placeholder' => 'Pilih Satu', 'choice_label' => 'name', 'query_builder' => function (EntityRepository $er) {
+			->add('category', EntityType::class, [ 
+                'class' => Categories::class, 
+                'label' => 'Categories', 
+                'required' => true, 
+                'placeholder' => 'Pilih Satu', 
+                'choice_label' => 'name', 
+                'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('r')
                         ->orderBy('r.name', 'ASC');
-                }, ])
+                }, 
+            ])
+			->add('image', FileType::class, [
+                'label' => 'Image',
+                'mapped' => false,
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2048k',
+                        'mimeTypes' => [
+                            'image/jpg',
+                            'image/jpeg',
+                            'image/png'
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid Image',
+                    ])
+                ],
+                'attr' => [
+                    'accept' => '.jpg,.jpeg,.img,.png'
+                ]
+            ])
         ;
         $builder->get('harga')->addModelTransformer(new RupiahTransformer());
     }

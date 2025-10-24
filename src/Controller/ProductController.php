@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use PhpRbacBundle\Attribute\AccessControl as RBAC;
 use App\Services\Datatable;
-
+use App\Services\FileUploader;
 
 #[Route('/product')]
 final class ProductController extends AbstractController
@@ -33,7 +33,7 @@ final class ProductController extends AbstractController
                   ->setOrderColumn('u.id')
                   ->setQueryBuilder(
                       $entityManager->createQueryBuilder()
-                          ->select("u.id, u.nama, u.harga, DATE_FORMAT(u.tanggal, '%d-%m-%Y') as tanggal, u.tahun, categories.name as categories_name")
+                          ->select("u.id, u.nama, u.harga, DATE_FORMAT(u.tanggal, '%d-%m-%Y') as tanggal, u.tahun, categories.name as categories_name, u.image")
                           ->from('App\Entity\Product', 'u')
                           ->leftJoin('App\Entity\Categories', 'categories', 'WITH', 'categories.id = u.category')
                   )
@@ -51,6 +51,7 @@ final class ProductController extends AbstractController
 				'tanggal' => $row['tanggal'],
 				'tahun' => $row['tahun'],
 				'categories_name' => $row['categories_name'],
+				'image' => $row['image'],
                 'actions' => $this->renderView('product/button.html.twig', ['id' => $row['id']]),
             ];
         }
@@ -65,14 +66,21 @@ final class ProductController extends AbstractController
 
     #[RBAC\IsGranted("/product/add")]
     #[Route('/new', name: 'app_product_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    public function new(Request $request, EntityManagerInterface $entityManager, FileUploader $fileUploader): Response
     {
         $product = new Product();
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+            $image = $form->get('image')->getData();
+			if ($image) {
+                $dir = $this->getParameter('image_directory');
+                $fileUploader->setDir('');
+                $fileUploader->setTargetDirectory($dir);
+                $imageFileName = $fileUploader->upload($image);
+                $product->setImage($imageFileName);
+            }
             $entityManager->persist($product);
             $entityManager->flush();
 
@@ -97,13 +105,20 @@ final class ProductController extends AbstractController
 
     #[RBAC\IsGranted("/product/update")]
     #[Route('/{id}/edit', name: 'app_product_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Product $product, EntityManagerInterface $entityManager): Response
+    public function edit(Request $request, EntityManagerInterface $entityManager, Product $product, FileUploader $fileUploader): Response
     {
         $form = $this->createForm(ProductType::class, $product);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            
+            $image = $form->get('image')->getData();
+			if ($image) {
+                $dir = $this->getParameter('image_directory');
+                $fileUploader->setDir('');
+                $fileUploader->setTargetDirectory($dir);
+                $imageFileName = $fileUploader->upload($image);
+                $product->setImage($imageFileName);
+            }
             $entityManager->flush();
 
             $this->addFlash('success', 'Update Data Berhasil');

@@ -25,6 +25,15 @@
             <th style="width: 25%;">Categories</th>
             <td style="width: 75%;">{{ product.category.name ?? '' }}</td>
         </tr>
+                                
+        <tr>
+            <th style="width: 25%;">Image</th>
+            <td style="width: 75%;">
+                <img src="{{ product.image == null ? asset('images/img.png') : asset(image_directory ~ product.image) }}"
+                    alt="" class="img img-thumbnail img-preview" id="img-preview-path"
+                    style="width: 160px; height: 160px;">
+            </td>
+        </tr>
                         
     </tbody>
 </table>
