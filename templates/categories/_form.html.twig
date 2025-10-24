@@ -1,9 +1,5 @@
 {{ form_start(form) }}
-    {{ form_row(form.nama) }}
-	{{ form_row(form.harga, {'attr': {'data-type': 'rupiah'}}) }}
-	{{ form_row(form.tanggal) }}
-	{{ form_row(form.tahun, {'attr': {'data-type': 'year'}}) }}
-	{{ form_row(form.category) }}
+    {{ form_row(form.name) }}
     <hr>
     <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

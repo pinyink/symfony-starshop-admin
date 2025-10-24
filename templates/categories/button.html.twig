@@ -1,0 +1,4 @@
+<a href="{{ path('app_categories_show', {id : id}) }}" class="btn btn-sm btn-primary text-white mr-1">Detail</a>
+{% if has_permission('/categories/update') %}
+<a href="{{ path('app_categories_edit', {id : id}) }}" class="btn btn-sm btn-info text-white">Edit</a>
+{% endif %}

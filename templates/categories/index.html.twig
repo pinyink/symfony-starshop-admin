@@ -1,19 +1,19 @@
 {% extends 'dashboard.html.twig' %}
 
-{% block title %} Product {% endblock %}
+{% block title %} Categories {% endblock %}
 
 {% block body %}
 <div class="content">
     <div class="container-fluid">
         <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
             <div class="flex-grow-1">
-                <h4 class="fs-18 fw-semibold m-0">Product</h4>
+                <h4 class="fs-18 fw-semibold m-0">Categories</h4>
             </div>
 
             <div class="text-end">
                 <ol class="breadcrumb m-0 py-0">
                     <li class="breadcrumb-item active">
-                        <a href="{{ path('app_product_index') }}">Product</a>
+                        <a href="{{ path('app_categories_index') }}">Categories</a>
                     </li>
                 </ol>
             </div>
@@ -36,11 +36,11 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h5 class="card-title mb-0">Data Product</h5>
+                        <h5 class="card-title mb-0">Data Categories</h5>
 
                         <div class="ms-auto"> 
-                            {% if has_permission('/product/add') %}
-                                <a href="{{ path('app_product_new') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                            {% if has_permission('/categories/add') %}
+                                <a href="{{ path('app_categories_new') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah</a>
                             {% endif %}
                         </div>
                     </div>
@@ -51,11 +51,7 @@
                             <thead>
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Product</th>
-									<th>Harga</th>
-									<th>Tanggal</th>
-									<th>Tahun</th>
-									<th>Categories</th>
+                                    <th>Name</th>
                                     <th>Aksi</th>
                                 </tr>
                             </thead>
@@ -77,7 +73,7 @@ $(document).ready(function () {
         processing: true,
         serverSide: true,
         ajax: {
-            url: '{{ path('app_product_ajax') }}',
+            url: '{{ path('app_categories_ajax') }}',
             type: 'GET',
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log('Error fetching data: ' + jqXHR.responseText);
@@ -85,11 +81,7 @@ $(document).ready(function () {
         },
         columns: [
             { data: 'no', orderable: false, searchable: false },
-			{ data: 'nama' },
-			{ data: 'harga' },
-			{ data: 'tanggal' },
-			{ data: 'tahun' },
-			{ data: 'categories_name' },
+			{ data: 'name' },
 			{ data: 'actions', orderable: false, searchable: false }
         ],
         pageLength: 10,

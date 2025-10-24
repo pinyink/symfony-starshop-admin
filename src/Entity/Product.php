@@ -25,6 +25,9 @@ class Product
     #[ORM\Column(nullable: true)]
     private ?int $tahun = null;
 
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    private ?Categories $category = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -74,6 +77,18 @@ class Product
     public function setTahun(?int $tahun): static
     {
         $this->tahun = $tahun;
+
+        return $this;
+    }
+
+    public function getCategory(): ?Categories
+    {
+        return $this->category;
+    }
+
+    public function setCategory(?Categories $category): static
+    {
+        $this->category = $category;
 
         return $this;
     }

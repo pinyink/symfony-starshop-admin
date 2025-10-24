@@ -1,18 +1,18 @@
 {% extends 'dashboard.html.twig' %}
 
-{% block title %} Product Show {% endblock %}
+{% block title %} Categories Show {% endblock %}
 
 {% block body %}
 <div class="content">
     <div class="container-fluid">
         <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
             <div class="flex-grow-1">
-                <h4 class="fs-18 fw-semibold m-0">Product</h4>
+                <h4 class="fs-18 fw-semibold m-0">Categories</h4>
             </div>
 
             <div class="text-end">
                 <ol class="breadcrumb m-0 py-0">
-                    <li class="breadcrumb-item"><a href="{{ path('app_product_index') }}">Product</a></li>
+                    <li class="breadcrumb-item"><a href="{{ path('app_categories_index') }}">Categories</a></li>
                     <li class="breadcrumb-item active">Show</li>
                 </ol>
             </div>
@@ -35,24 +35,24 @@
             <div class="card">
                 <div class="card-header">
                     <div class="d-flex align-items-center">
-                        <h5 class="card-title mb-0">Detail Product</h5>
+                        <h5 class="card-title mb-0">Detail Categories</h5>
 
                         <div class="ms-auto"> 
-                            {% if has_permission('/product/add') %}
-                                <a href="{{ path('app_product_new') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                            {% if has_permission('/categories/add') %}
+                                <a href="{{ path('app_categories_new') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah</a>
                             {% endif %}
                         </div>
                     </div>
                 </div>
                 <div class="card-body">
-                    {{ include('product/_detail.html.twig') }}
+                    {{ include('categories/_detail.html.twig') }}
                     <div class="d-flex justify-content mt-3 gap-1">
-                        {% if has_permission('/product/update') %}
-                        <a href="{{ path('app_product_edit', { 'id' : product.id}) }}" class="btn btn-info text-white"><i class="fa fa-edit"></i> edit</a>
+                        {% if has_permission('/categories/update') %}
+                        <a href="{{ path('app_categories_edit', { 'id' : categories.id}) }}" class="btn btn-info text-white"><i class="fa fa-edit"></i> edit</a>
                         {% endif %}
-                        {% if has_permission('/product/delete') %}
-                        <form method="post" id="formdelete" action="{{ path('app_product_delete', {'id': product.id}) }}">
-                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ product.id) }}">
+                        {% if has_permission('/categories/delete') %}
+                        <form method="post" id="formdelete" action="{{ path('app_categories_delete', {'id': categories.id}) }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ categories.id) }}">
                             <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
                         </form>
                         {% endif %}
