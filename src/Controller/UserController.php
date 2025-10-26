@@ -91,6 +91,10 @@ final class UserController extends AbstractController
     public function edit(Request $request, User $user, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, FileUploader $fileUploader, RoleManager $roleManager): Response
     {
         $form = $this->createForm(UserType::class, $user);
+        $role = $user->getRbacRoles();
+        foreach ($role as $key => $value) {
+            $role = $value;
+        }
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
