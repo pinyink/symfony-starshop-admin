@@ -36,13 +36,19 @@
                 </li>
 
                 <li>
-                    <a href="#sidebarDashboards" data-bs-toggle="collapse">
-                        <i data-feather="settings"></i>
+                    <a href="#adminSidebar" data-bs-toggle="collapse">
+                        <i data-feather="home"></i>
                         <span> Admin </span>
                         <span class="menu-arrow"></span>
                     </a>
-                    <div class="collapse" id="sidebarDashboards">
+                    <div class="collapse" id="adminSidebar">
                         <ul class="nav-second-level">
+                            <li>
+                                <a href="{{ path('app_role_index') }}" class="tp-link">Roles</a>
+                            </li>
+                            <li>
+                                <a href="{{ path('app_permission') }}" class="tp-link">Permissions</a>
+                            </li>
                             <li>
                                 <a href="{{ path('app_user') }}" class="tp-link">Users</a>
                             </li>

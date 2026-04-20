@@ -44,14 +44,6 @@ final class RoleController extends AbstractController
             $this->addFlash('success', 'Role berhasil ditambahkan');
             return $this->redirectToRoute('app_role_index');
         } elseif ($data['method'] == 'edit') {
-            // $role = $roleManager->getNode($data['id']);
-            // if (!$role) {
-            //     $this->addFlash('error', 'Role tidak ditemukan');
-            //     return $this->redirectToRoute('app_role_index');
-            // }
-            // $roleManager->edit($role, $data['code'], $data['description']);
-            // $this->addFlash('success', 'Role berhasil diupdate');
-
             $role = $entity->getRepository(Role::class)->find($data['id']);
             if (!$role) {
                 $this->addFlash('error', 'Role tidak ditemukan');
