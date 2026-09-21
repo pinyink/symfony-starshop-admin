@@ -16,6 +16,8 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
 
 class UserType extends AbstractType
 {
@@ -25,22 +27,9 @@ class UserType extends AbstractType
             ->add('username', TextType::class, [
                 'label' => 'Username',
                 'required' => true,
-                'attr' => [
-                    'autocomplete' => 'off'
-                ]
+                'attr' => ['autocomplete' => 'off']
             ])
-            ->add('email', EmailType::class, [
-                'label' => 'Email'
-            ])
-            // ->add('roles', ChoiceType::class, [
-            //     'choices' => [
-            //         'Pilih Satu' => '',
-            //         'Administrator' => 'ROLE_ADMIN',
-            //         'User' => 'ROLE_USER'
-            //     ],
-            //     'mapped' => false,
-            //     'label' => 'Privilages',
-            // ])
+            ->add('email', EmailType::class, ['label' => 'Email'])
             ->add('roles', EntityType::class, [
                 'class' => Role::class,
                 'placeholder' => 'Pilih Satu',
@@ -61,9 +50,7 @@ class UserType extends AbstractType
                 'mapped' => false,
                 'required' => false
             ])
-            ->add('fullname', TextType::class, [
-                'label' => 'Nama Lengkap'
-            ])
+            ->add('fullname', TextType::class, ['label' => 'Nama Lengkap'])
             ->add('foto', FileType::class, [
                 'label' => 'Foto Profil',
                 'mapped' => false,
@@ -71,19 +58,29 @@ class UserType extends AbstractType
                 'constraints' => [
                     new File([
                         'maxSize' => '2048k',
-                        'mimeTypes' => [
-                            'image/jpg',
-                            'image/jpeg',
-                            'image/png'
-                        ],
+                        'mimeTypes' => ['image/jpg', 'image/jpeg', 'image/png'],
                         'mimeTypesMessage' => 'Please upload a valid Image',
                     ])
                 ],
-                'attr' => [
-                    'accept' => '.jpg,.jpeg,.img,.png'
-                ]
+                'attr' => ['accept' => '.jpg,.jpeg,.img,.png']
             ])
         ;
+
+        // Listener untuk mengisi nilai awal 'roles' jika entity User sudah punya RBAC Role
+        $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            $user = $event->getData();
+            $form = $event->getForm();
+
+            if (!$user || null === $user->getId()) {
+                return; // Jika mode create / new user, abaikan
+            }
+
+            // Ambil role pertama dari relasi RbacRoles
+            if (method_exists($user, 'getRbacRoles') && !$user->getRbacRoles()->isEmpty()) {
+                $currentRole = $user->getRbacRoles()->first();
+                $form->get('roles')->setData($currentRole);
+            }
+        });
     }
 
     public function configureOptions(OptionsResolver $resolver): void

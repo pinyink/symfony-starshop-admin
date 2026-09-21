@@ -88,25 +88,31 @@ final class UserController extends AbstractController
     }
 
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, FileUploader $fileUploader, RoleManager $roleManager): Response
-    {
+    public function edit(
+        Request $request,
+        User $user,
+        EntityManagerInterface $entityManager,
+        UserPasswordHasherInterface $passwordHasher,
+        FileUploader $fileUploader,
+        RoleManager $roleManager
+    ): Response {
+        // 1. Ambil RbacRole pertama dari user
+        $currentRole = $user->getRbacRoles()->first() ?: null;
+
         $form = $this->createForm(UserType::class, $user);
-        $role = $user->getRbacRoles();
-        foreach ($role as $key => $value) {
-            $role = $value;
+        if ($currentRole) {
+            $form->get('roles')->setData($currentRole);
         }
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $data = $request->request->all();
-            if ($data['user']['password']['first'] != null) {
-                $hashedPassword = $passwordHasher->hashPassword(
-                    $user,
-                    $data['user']['password']['first']
-                );
+            $plainPassword = $form->get('password')->getData();
+            if (!empty($plainPassword)) {
+                $hashedPassword = $passwordHasher->hashPassword($user, $plainPassword);
                 $user->setPassword($hashedPassword);
             }
-            // handle upload foto
+
             $foto = $form->get('foto')->getData();
             if ($foto) {
                 $dir = $this->getParameter('foto_profil_directory');
@@ -115,24 +121,24 @@ final class UserController extends AbstractController
                 $fotoFileName = $fileUploader->upload($foto);
                 $user->setFoto($fotoFileName);
             }
-            $user->setEmail($data['user']['email']);
-            $user->setFullname($data['user']['fullname']);
 
-            $user->getRbacRoles()->clear();
-            $role = $roleManager->getNode($data['user']['roles']);
-            $user->addRbacRole($role);
+            $selectedRoleEntity = $form->get('roles')->getData(); // Mengembalikan object Role
+            if ($selectedRoleEntity) {
+                $user->getRbacRoles()->clear();
+                // Jika roleManager butuh ID atau object, sesuaikan kebutuhan method getNode / addRbacRole
+                $roleNode = $roleManager->getNode($selectedRoleEntity->getId());
+                $user->addRbacRole($roleNode);
+            }
 
-            $entityManager->persist($user);
             $entityManager->flush();
+
             $this->addFlash('success', 'Edit Data Berhasil');
             return $this->redirectToRoute('app_user_edit', ['id' => $user->getId()], Response::HTTP_SEE_OTHER);
         }
 
-        $privilages = $user->getRoles();
         return $this->render('user/edit.html.twig', [
             'user' => $user,
-            'form' => $form,
-            'priv' => $privilages[0]
+            'form' => $form->createView(),
         ]);
     }
 
