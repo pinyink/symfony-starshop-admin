@@ -14,6 +14,6 @@ class RupiahTransformer implements DataTransformerInterface
 
     public function reverseTransform($value): mixed
     {
-        return (int) str_replace(['.', ','], '', $value);
+        return $value ? (int) str_replace(['.', ','], '', (string) $value) : 0;
     }
 }
