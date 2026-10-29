@@ -1,0 +1,2119 @@
+{
+ "url": "index.html",
+ "at": "2026-10-28T09:04:18.554Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 9,
+   "filled": [
+    0.4,
+    0.26,
+    0.21,
+    0.25,
+    0.27,
+    0.26,
+    0.24,
+    0.31,
+    0.19
+   ],
+   "motion": {
+    "elements": 9,
+    "css": 9,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 7770,
+     "screens": 8.6,
+     "words": 290,
+     "img": 5,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 5,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "1000?grayscale",
+      "600?grayscale",
+      "600?grayscale",
+      "600?grayscale",
+      "600?grayscale"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "TOKO KILAT UMKM.",
+     "words": 3,
+     "chars": 16,
+     "lines": 2,
+     "size": 51.8,
+     "vw": 3.6,
+     "font": "Rokkitt",
+     "weight": 800,
+     "tracking": -0.02,
+     "leading": 0.95,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.27,
+     "top": 677,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "TOKO KILAT UMKM.",
+     "words": 3,
+     "lines": 2,
+     "size": 51.8,
+     "font": "Rokkitt"
+    },
+    "headings": [
+     {
+      "text": "StarShop",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.27,
+      "top": 594,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "TOKO KILAT UMKM.",
+      "words": 3,
+      "chars": 16,
+      "lines": 2,
+      "size": 51.8,
+      "vw": 3.6,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.27,
+      "top": 677,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "KENDALIKAN TOKO ANDA",
+      "words": 3,
+      "chars": 20,
+      "lines": 2,
+      "size": 40.3,
+      "vw": 2.8,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.05,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.32,
+      "top": 2066,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "SUASANA UMKM LOKAL",
+      "words": 3,
+      "chars": 18,
+      "lines": 2,
+      "size": 40.3,
+      "vw": 2.8,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.05,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.32,
+      "top": 3914,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "ANGKA NYATA",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 40.3,
+      "vw": 2.8,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.05,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.32,
+      "top": 4791,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "2 Menit",
+      "words": 2,
+      "chars": 7,
+      "lines": 2,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "left",
+      "widthRatio": 0.08,
+      "top": 5521,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "0%",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "left",
+      "widthRatio": 0.08,
+      "top": 5729,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "14.000+",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 40,
+      "vw": 2.8,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "left",
+      "widthRatio": 0.08,
+      "top": 5912,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "PILIHAN PAKET",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 40.3,
+      "vw": 2.8,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.05,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.32,
+      "top": 6198,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Rp 99rb/bln",
+      "words": 2,
+      "chars": 11,
+      "lines": 2,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.1,
+      "top": 6739,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "Rp 0",
+      "words": 2,
+      "chars": 4,
+      "lines": 1,
+      "size": 48,
+      "vw": 3.3,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.09,
+      "top": 6816,
+      "tag": "div",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 11,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Literata",
+       "share": 0.93,
+       "mono": false
+      },
+      {
+       "family": "Rokkitt",
+       "share": 0.07,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      20,
+      21,
+      26,
+      32,
+      40,
+      48,
+      52
+     ],
+     "sizeCount": 11,
+     "notLoaded": [],
+     "body": {
+      "font": "Literata",
+      "size": 21,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.8
+     },
+     "measureChars": 44,
+     "max": {
+      "size": 51.8,
+      "vw": 3.6,
+      "font": "Rokkitt",
+      "text": "Toko kilat UMKM."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.05,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#8f8a84",
+       "share": 0.69
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.25
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0.04
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#0c0a08"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 0,
+     "radius": "pill",
+     "height": 66,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": []
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 13,
+     "boxRadius": 16,
+     "squareMedia": 1,
+     "roundedMedia": 4,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 2307
+      },
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 5497
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.25
+     }
+    ],
+    "nav": null,
+    "fontsLoaded": [
+     "literata",
+     "rokkitt"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 7770,
+    "margins": {
+     "left": 433,
+     "right": 488
+    },
+    "sections": [],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "TOKO KILAT UMKM.",
+      "size": 52,
+      "top": 677,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 488,
+      "n": 9
+     },
+     {
+      "x": 536,
+      "n": 3
+     },
+     {
+      "x": 524,
+      "n": 2
+     },
+     {
+      "x": 776,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 15,
+    "bodySize": 21,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0.22,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 360,
+     "h": 780
+    }
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 7,
+   "filled": [
+    0.84,
+    0.34,
+    0.37,
+    0.52,
+    0.56,
+    0.49,
+    0.41
+   ],
+   "motion": {
+    "elements": 9,
+    "css": 9,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 6917,
+     "screens": 6.8,
+     "words": 290,
+     "img": 5,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 5,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "1000?grayscale",
+      "600?grayscale",
+      "600?grayscale",
+      "600?grayscale",
+      "600?grayscale"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "TOKO KILAT UMKM.",
+     "words": 3,
+     "chars": 16,
+     "lines": 1,
+     "size": 40,
+     "vw": 5.2,
+     "font": "Rokkitt",
+     "weight": 800,
+     "tracking": -0.02,
+     "leading": 0.95,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.6,
+     "top": 703,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "TOKO KILAT UMKM.",
+     "words": 3,
+     "lines": 1,
+     "size": 40,
+     "font": "Rokkitt"
+    },
+    "headings": [
+     {
+      "text": "StarShop",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.6,
+      "top": 620,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "TOKO KILAT UMKM.",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 40,
+      "vw": 5.2,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.6,
+      "top": 703,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "KENDALIKAN TOKO ANDA",
+      "words": 3,
+      "chars": 20,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.05,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.7,
+      "top": 1823,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "SUASANA UMKM LOKAL",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.05,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.7,
+      "top": 3358,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "ANGKA NYATA",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.05,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.7,
+      "top": 4183,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "2 Menit",
+      "words": 2,
+      "chars": 7,
+      "lines": 2,
+      "size": 40,
+      "vw": 5.2,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "left",
+      "widthRatio": 0.16,
+      "top": 4905,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "0%",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 40,
+      "vw": 5.2,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "left",
+      "widthRatio": 0.16,
+      "top": 5113,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "14.000+",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 40,
+      "vw": 5.2,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "left",
+      "widthRatio": 0.16,
+      "top": 5268,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "PILIHAN PAKET",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.05,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.7,
+      "top": 5528,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Rp 99rb/bln",
+      "words": 2,
+      "chars": 11,
+      "lines": 2,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.21,
+      "top": 5961,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "Rp 0",
+      "words": 2,
+      "chars": 4,
+      "lines": 1,
+      "size": 48,
+      "vw": 6.3,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.21,
+      "top": 6007,
+      "tag": "div",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 11,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Literata",
+       "share": 0.93,
+       "mono": false
+      },
+      {
+       "family": "Rokkitt",
+       "share": 0.07,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      19,
+      20,
+      23,
+      32,
+      40,
+      48
+     ],
+     "sizeCount": 10,
+     "notLoaded": [],
+     "body": {
+      "font": "Literata",
+      "size": 19.1,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.8
+     },
+     "measureChars": 56,
+     "max": {
+      "size": 48,
+      "vw": 6.3,
+      "font": "Rokkitt",
+      "text": "Rp 0"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.05,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#181512",
+       "top": 548,
+       "hsl": {
+        "h": 30,
+        "s": 0.14,
+        "l": 0.08
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#8f8a84",
+       "share": 0.69
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.25
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0.04
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#0c0a08"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 3,
+     "inHero": 1,
+     "radius": "pill",
+     "height": 63,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Mulai Toko Gratis"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 14,
+     "boxRadius": 16,
+     "squareMedia": 1,
+     "roundedMedia": 4,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 1974
+      },
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 4881
+      }
+     ]
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.48
+     }
+    ],
+    "nav": null,
+    "fontsLoaded": [
+     "literata",
+     "rokkitt"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 6917,
+    "margins": {
+     "left": 85,
+     "right": 116
+    },
+    "sections": [
+     {
+      "sel": "div.sticky-side",
+      "tag": "div",
+      "top": 12,
+      "height": 512,
+      "words": 15,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 12,
+      "right": 12,
+      "textLeft": 85,
+      "textRight": 372,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.hero-card",
+      "tag": "div",
+      "top": 548,
+      "height": 546,
+      "words": 25,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Toko kilat UMKM.",
+       "size": 40,
+       "tag": "h1"
+      },
+      "left": 152,
+      "right": 204,
+      "textLeft": 152,
+      "textRight": 204,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#intro",
+      "tag": "section",
+      "top": 1254,
+      "height": 409,
+      "words": 75,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 116,
+      "right": 132,
+      "textLeft": 116,
+      "textRight": 132,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#features",
+      "tag": "section",
+      "top": 1823,
+      "height": 1375,
+      "words": 89,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Kendalikan Toko Anda",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 116,
+      "right": 140,
+      "textLeft": 116,
+      "textRight": 140,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#gallery",
+      "tag": "section",
+      "top": 3358,
+      "height": 666,
+      "words": 3,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Suasana UMKM Lokal",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 116,
+      "right": 116,
+      "textLeft": 116,
+      "textRight": 283,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#stats",
+      "tag": "section",
+      "top": 4183,
+      "height": 1184,
+      "words": 41,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Angka Nyata",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 116,
+      "right": 116,
+      "textLeft": 116,
+      "textRight": 145,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#pricing",
+      "tag": "section",
+      "top": 5528,
+      "height": 799,
+      "words": 46,
+      "media": 0,
+      "middle": 83,
+      "heading": {
+       "text": "Rp 0",
+       "size": 48,
+       "tag": "div"
+      },
+      "left": 116,
+      "right": 174,
+      "textLeft": 116,
+      "textRight": 174,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#cta",
+      "tag": "section",
+      "top": 6486,
+      "height": 183,
+      "words": 15,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 116,
+      "right": 262,
+      "textLeft": 116,
+      "textRight": 262,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer",
+      "tag": "footer",
+      "top": 6749,
+      "height": 144,
+      "words": 8,
+      "media": 0,
+      "middle": 55,
+      "heading": null,
+      "left": 164,
+      "right": 198,
+      "textLeft": 164,
+      "textRight": 198,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "TOKO KILAT UMKM.",
+      "size": 40,
+      "top": 703,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 116,
+      "n": 9
+     },
+     {
+      "x": 164,
+      "n": 3
+     },
+     {
+      "x": 152,
+      "n": 2
+     },
+     {
+      "x": 440,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 15,
+    "bodySize": 19,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 9,
+   "filled": [
+    0.87,
+    0.59,
+    0.61,
+    0.69,
+    0.73,
+    0.83,
+    0.71,
+    0.63,
+    0.6
+   ],
+   "motion": {
+    "elements": 9,
+    "css": 9,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 492,
+     "h": 1063
+    },
+    "page": {
+     "height": 7013,
+     "screens": 6.6,
+     "words": 290,
+     "img": 5,
+     "video": 0,
+     "canvas": 0,
+     "svg": 0,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 1,
+     "uiAbuse": false,
+     "realPictures": 5,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [
+      "1000?grayscale",
+      "600?grayscale",
+      "600?grayscale",
+      "600?grayscale",
+      "600?grayscale"
+     ],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "TOKO KILAT UMKM.",
+     "words": 3,
+     "chars": 16,
+     "lines": 1,
+     "size": 40,
+     "vw": 8.1,
+     "font": "Rokkitt",
+     "weight": 800,
+     "tracking": -0.02,
+     "leading": 0.95,
+     "upper": true,
+     "italic": false,
+     "mono": false,
+     "align": "left",
+     "position": "center",
+     "widthRatio": 0.78,
+     "top": 613,
+     "tag": "h1",
+     "kind": "heading"
+    },
+    "h1": {
+     "text": "TOKO KILAT UMKM.",
+     "words": 3,
+     "lines": 1,
+     "size": 40,
+     "font": "Rokkitt"
+    },
+    "headings": [
+     {
+      "text": "Kopi Artisan Nusantara",
+      "words": 3,
+      "chars": 22,
+      "lines": 1,
+      "size": 24,
+      "vw": 4.9,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.68,
+      "top": 296,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "StarShop",
+      "words": 1,
+      "chars": 8,
+      "lines": 1,
+      "size": 32,
+      "vw": 6.5,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": -0.01,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 530,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "TOKO KILAT UMKM.",
+      "words": 3,
+      "chars": 16,
+      "lines": 1,
+      "size": 40,
+      "vw": 8.1,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": -0.02,
+      "leading": 0.95,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.78,
+      "top": 613,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "KENDALIKAN TOKO ANDA",
+      "words": 3,
+      "chars": 20,
+      "lines": 1,
+      "size": 32,
+      "vw": 6.5,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.05,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 1718,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "SUASANA UMKM LOKAL",
+      "words": 3,
+      "chars": 18,
+      "lines": 1,
+      "size": 32,
+      "vw": 6.5,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.05,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 3337,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "ANGKA NYATA",
+      "words": 2,
+      "chars": 11,
+      "lines": 1,
+      "size": 32,
+      "vw": 6.5,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.05,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 4163,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "2 Menit",
+      "words": 2,
+      "chars": 7,
+      "lines": 2,
+      "size": 40,
+      "vw": 8.1,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "left",
+      "widthRatio": 0.24,
+      "top": 4885,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "0%",
+      "words": 1,
+      "chars": 2,
+      "lines": 1,
+      "size": 40,
+      "vw": 8.1,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "left",
+      "widthRatio": 0.24,
+      "top": 5093,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "14.000+",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 40,
+      "vw": 8.1,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "right",
+      "position": "left",
+      "widthRatio": 0.24,
+      "top": 5275,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "PILIHAN PAKET",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 32,
+      "vw": 6.5,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.05,
+      "upper": true,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 5562,
+      "tag": "h2",
+      "kind": "heading"
+     },
+     {
+      "text": "Rp 99rb/bln",
+      "words": 2,
+      "chars": 11,
+      "lines": 2,
+      "size": 48,
+      "vw": 9.8,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.26,
+      "top": 6009,
+      "tag": "div",
+      "kind": "heading"
+     },
+     {
+      "text": "Rp 0",
+      "words": 2,
+      "chars": 4,
+      "lines": 1,
+      "size": 48,
+      "vw": 9.8,
+      "font": "Rokkitt",
+      "weight": 800,
+      "tracking": 0,
+      "leading": 1.6,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.24,
+      "top": 6086,
+      "tag": "div",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 12,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 2,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Literata",
+       "share": 0.93,
+       "mono": false
+      },
+      {
+       "family": "Rokkitt",
+       "share": 0.07,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      32,
+      40,
+      48
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Literata",
+      "size": 18,
+      "leading": 1.6,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.8
+     },
+     "measureChars": 51,
+     "max": {
+      "size": 48,
+      "vw": 9.8,
+      "font": "Rokkitt",
+      "text": "Rp 0"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.05,
+     "centerShare": 0,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0c0a08",
+     "bodyBgHsl": {
+      "h": 30,
+      "s": 0.2,
+      "l": 0.04
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#181512",
+       "top": 458,
+       "hsl": {
+        "h": 30,
+        "s": 0.14,
+        "l": 0.08
+       }
+      },
+      {
+       "color": "#1e1a16",
+       "top": 5643,
+       "hsl": {
+        "h": 30,
+        "s": 0.15,
+        "l": 0.1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#8f8a84",
+       "share": 0.69
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.25
+      },
+      {
+       "color": "#c9a45a",
+       "share": 0.04
+      },
+      {
+       "color": "#0c0a08",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#0c0a08"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 1,
+     "radius": "pill",
+     "height": 61,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Mulai Toko Gratis"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 0,
+     "hairlineSamples": [],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 13,
+     "boxRadius": 16,
+     "squareMedia": 1,
+     "roundedMedia": 4,
+     "mediaRadius": 12,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [
+     {
+      "type": "img",
+      "ratio": 0.39
+     }
+    ],
+    "nav": null,
+    "fontsLoaded": [
+     "literata",
+     "rokkitt"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 492,
+     "h": 1063
+    },
+    "pageH": 7013,
+    "margins": {
+     "left": 24,
+     "right": 13
+    },
+    "sections": [
+     {
+      "sel": "div.sticky-side",
+      "tag": "div",
+      "top": 12,
+      "height": 422,
+      "words": 15,
+      "media": 1,
+      "middle": 0,
+      "heading": null,
+      "left": 85,
+      "right": 96,
+      "textLeft": 85,
+      "textRight": 96,
+      "fullBleed": true,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.hero-card",
+      "tag": "div",
+      "top": 458,
+      "height": 532,
+      "words": 25,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Toko kilat UMKM.",
+       "size": 40,
+       "tag": "h1"
+      },
+      "left": 60,
+      "right": 66,
+      "textLeft": 60,
+      "textRight": 66,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#intro",
+      "tag": "section",
+      "top": 1150,
+      "height": 408,
+      "words": 75,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 24,
+      "right": 16,
+      "textLeft": 24,
+      "textRight": 16,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#features",
+      "tag": "section",
+      "top": 1718,
+      "height": 1459,
+      "words": 89,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Kendalikan Toko Anda",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 21,
+      "textLeft": 24,
+      "textRight": 21,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#gallery",
+      "tag": "section",
+      "top": 3337,
+      "height": 666,
+      "words": 3,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Suasana UMKM Lokal",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 13,
+      "textLeft": 24,
+      "textRight": 99,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#stats",
+      "tag": "section",
+      "top": 4163,
+      "height": 1239,
+      "words": 41,
+      "media": 2,
+      "middle": 0,
+      "heading": {
+       "text": "Angka Nyata",
+       "size": 32,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 13,
+      "textLeft": 24,
+      "textRight": 49,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#pricing",
+      "tag": "section",
+      "top": 5562,
+      "height": 862,
+      "words": 46,
+      "media": 0,
+      "middle": 38,
+      "heading": {
+       "text": "Rp 99rb",
+       "size": 48,
+       "tag": "div"
+      },
+      "left": 24,
+      "right": 61,
+      "textLeft": 24,
+      "textRight": 61,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section#cta",
+      "tag": "section",
+      "top": 6584,
+      "height": 181,
+      "words": 15,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 24,
+      "right": 78,
+      "textLeft": 24,
+      "textRight": 78,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "footer",
+      "tag": "footer",
+      "top": 6845,
+      "height": 144,
+      "words": 8,
+      "media": 0,
+      "middle": 24,
+      "heading": null,
+      "left": 72,
+      "right": 98,
+      "textLeft": 72,
+      "textRight": 98,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "TOKO KILAT UMKM.",
+      "size": 40,
+      "top": 613,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 24,
+      "n": 9
+     },
+     {
+      "x": 72,
+      "n": 3
+     },
+     {
+      "x": 60,
+      "n": 2
+     },
+     {
+      "x": 303,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 15,
+    "bodySize": 18,
+    "stage": false,
+    "explains": true,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": null,
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "card-rows",
+   "width": 1440,
+   "message": "2 rows of identical boxed cards.",
+   "fix": "Vary the composition; not every section is a card grid.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "size-count",
+   "width": 1440,
+   "message": "11 different font sizes (14, 15, 16, 17, 20, 21, 26, 32, 40, 48, 52).",
+   "fix": "A page needs about five: display, heading, lead, body, small.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "grey-body",
+   "width": 1440,
+   "message": "The running text is a soft grey on its ground (5.8:1).",
+   "fix": "Set body copy in the full ink (7:1 or more). Keep the muted ink for secondary notes; pages read thin and unfinished when everything is grey.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "first-action",
+   "width": 1440,
+   "message": "No visible button in the first screen.",
+   "fix": "Give the one primary action a real button in the first screen (a filled or solid-bordered control, 44px or taller), not only a link in the navigation."
+  },
+  {
+   "level": "WARN",
+   "id": "no-footage",
+   "width": 1440,
+   "message": "No video anywhere on the page.",
+   "fix": "Look for one honest clip with scripts/assets.mjs --video (the place, the material, the process) and use it as a muted loop with a poster frame. Defend its absence only if no clip fits the subject."
+  },
+  {
+   "level": "WARN",
+   "id": "off-centre",
+   "width": 1440,
+   "message": "The margins differ: 433px on the left, 488px on the right, at 1440px.",
+   "fix": "Put the navigation and the content on one pair of margins; check for padding on one side only, a scrollbar gutter, or a header on another inset than the page.",
+   "alsoAt": [
+    768
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "still-page",
+   "width": 1440,
+   "message": "Little motion: 9 element(s) moved while the page loaded and scrolled.",
+   "fix": "Give every section an entrance for its parts (not one fade of the whole block) and add one moving picture: a looping clip or a slow move on a photograph."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "D:\\laragon\\www\\github\\starshop\\.taste-skill\\inspect\\desktop-fold.jpg",
+   "pages": [
+    "D:\\laragon\\www\\github\\starshop\\.taste-skill\\inspect\\desktop-page-01.jpg",
+    "D:\\laragon\\www\\github\\starshop\\.taste-skill\\inspect\\desktop-page-02.jpg",
+    "D:\\laragon\\www\\github\\starshop\\.taste-skill\\inspect\\desktop-page-03.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "D:\\laragon\\www\\github\\starshop\\.taste-skill\\inspect\\tablet-fold.jpg",
+   "pages": [
+    "D:\\laragon\\www\\github\\starshop\\.taste-skill\\inspect\\tablet-page-01.jpg",
+    "D:\\laragon\\www\\github\\starshop\\.taste-skill\\inspect\\tablet-page-02.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "D:\\laragon\\www\\github\\starshop\\.taste-skill\\inspect\\mobile-fold.jpg",
+   "pages": [
+    "D:\\laragon\\www\\github\\starshop\\.taste-skill\\inspect\\mobile-page-01.jpg",
+    "D:\\laragon\\www\\github\\starshop\\.taste-skill\\inspect\\mobile-page-02.jpg"
+   ],
+   "film": []
+  }
+ ]
+}
