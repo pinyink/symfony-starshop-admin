@@ -1,0 +1,67 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %} General Settings {% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
+            <div class="flex-grow-1">
+                <h4 class="fs-18 fw-semibold m-0">General Settings</h4>
+            </div>
+        </div>
+    </div>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">{{ message }}</div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">{{ message }}</div>
+    {% endfor %}
+
+    <form method="post" enctype="multipart/form-data">
+        <input type="hidden" name="_token" value="{{ csrf_token('settings_edit') }}">
+        <div class="row">
+            {% for groupName, settings in grouped_settings %}
+                <div class="col-md-6">
+                    <div class="card mb-3">
+                        <div class="card-header bg-light">
+                            <h5 class="card-title text-capitalize mb-0">{{ groupName }} Settings</h5>
+                        </div>
+                        <div class="card-body">
+                            {% for setting in settings %}
+                                <div class="mb-3">
+                                    <label class="form-label fw-bold">{{ setting.settingKey }}</label>
+                                    {% if setting.type == 'file' %}
+                                        {% if setting.settingValue %}
+                                            <div class="mb-2">
+                                                <img src="{{ asset(setting.settingValue) }}" alt="" style="max-height: 60px;" class="img-thumbnail">
+                                            </div>
+                                        {% endif %}
+                                        <input type="file" class="form-control" name="settings[{{ setting.settingKey }}]">
+                                    {% else %}
+                                        <input type="text" class="form-control" name="settings[{{ setting.settingKey }}]" value="{{ setting.settingValue }}">
+                                    {% endif %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% else %}
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body text-center text-muted">
+                            Belum ada pengaturan. Jalankan seeder atau buat setting via database.
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        {% if grouped_settings %}
+            <div class="mb-4">
+                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+            </div>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
