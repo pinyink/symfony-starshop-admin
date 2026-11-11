@@ -2,6 +2,11 @@
 
 ## Changelog & Development History
 
+### [2026-11-11] — General Settings Module & Permission Integration
+- **General Settings Module:** Added `Setting` entity, repository, migration, `SettingService`, and `SettingController` to manage app-wide key-value configurations grouped by category with file upload support.
+- **Seeder Commands:** Created `app:seed-settings` and `app:seed-settings-permission` console commands for bootstrapping default settings and RBAC permission nodes.
+- **Sidebar & RBAC Integration:** Added Settings menu item in the dashboard sidebar protected by `is_granted('settings')`.
+
 ### [2026-11-11] — RBAC & Permission Enhancements
 - **Added `AdminVoter` (`src/Security/AdminVoter.php`):** Automatically grants full access to users with `ROLE_ADMIN` across all menus and permissions.
 - **User Controller & Form Integration:** Updated `UserController` to automatically assign `ROLE_ADMIN` to Symfony security roles when an admin RBAC role is selected during user creation or editing.
