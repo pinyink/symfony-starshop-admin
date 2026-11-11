@@ -63,12 +63,16 @@
                                     <td>{{ permission.description }}</td>
                                     <td>
                                         <table>
-                                            {% for child in permission.child %}
-                                                <tr>
-                                                    <td>
-                                                        <span class="badge bg-primary">{{ child.code ~ " ~ " ~ child.description }}</span>
-                                                    </td>
-                                                </tr>
+                                             {% for child in permission.child %}
+                                                 <tr>
+                                                     <td>
+                                                         <span class="badge bg-primary">{{ child.code ~ " ~ " ~ child.description }}</span>
+                                                     </td>
+                                                     <td>
+                                                         <button type="button" class="btn btn-sm btn-success" onclick="edit_data({{ child.id }}, '{{ child.code }}', '{{ child.description }}')">Edit</button>
+                                                         <button type="button" class="btn btn-sm btn-danger" onclick="delete_data({{ child.id }})">Delete</button>
+                                                     </td>
+                                                 </tr>
                                             {% else %}
                                                 <tr class="text-muted">
                                                     <td>
