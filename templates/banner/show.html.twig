@@ -1,0 +1,122 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %} Detail Banner {% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
+            <div class="flex-grow-1">
+                <h4 class="fs-18 fw-semibold m-0">Banner</h4>
+            </div>
+
+            <div class="text-end">
+                <ol class="breadcrumb m-0 py-0">
+                    <li class="breadcrumb-item"><a href="{{ path('app_banner_index') }}">Banner</a></li>
+                    <li class="breadcrumb-item active">Detail</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h5 class="card-title mb-0">Detail Banner</h5>
+
+                        <div class="ms-auto"> 
+                            {% if has_permission('/banners/add') %}
+                                <a href="{{ path('app_banner_new') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered table-striped">
+                        <tbody>
+                            <tr>
+                                <th style="width: 25%;">Judul Banner</th>
+                                <td style="width: 75%;">{{ banner.title }}</td>
+                            </tr>
+                            <tr>
+                                <th>Urutan (Sort Order)</th>
+                                <td>{{ banner.sortOrder }}</td>
+                            </tr>
+                            <tr>
+                                <th>Status</th>
+                                <td>
+                                    {% if banner.isIsActive %}
+                                        <span class="badge bg-success">Aktif</span>
+                                    {% else %}
+                                        <span class="badge bg-secondary">Nonaktif</span>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Tanggal Dibuat</th>
+                                <td>{{ banner.createdAt ? banner.createdAt|date('d-m-Y H:i:s') : '' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Gambar Banner</th>
+                                <td>
+                                    <img src="{{ banner.image == null ? asset('images/img.png') : asset(image_directory ~ banner.image) }}"
+                                        alt="Banner Image" class="img img-thumbnail"
+                                        style="max-width: 400px; max-height: 200px; object-fit: cover;">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="d-flex justify-content mt-3 gap-1">
+                        {% if has_permission('/banners/update') %}
+                        <a href="{{ path('app_banner_edit', { 'id' : banner.id}) }}" class="btn btn-info text-white"><i class="fa fa-edit"></i> Edit</a>
+                        {% endif %}
+                        {% if has_permission('/banners/delete') %}
+                        <form method="post" id="formdelete" action="{{ path('app_banner_delete', {'id': banner.id}) }}">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ banner.id) }}">
+                            <button class="btn btn-danger"><i class="fa fa-trash"></i> Delete</button>
+                        </form>
+                        {% endif %}
+                        <a href="{{ path('app_banner_index') }}" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Kembali</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+    $('#formdelete').submit(function (e) { 
+        e.preventDefault();
+        Swal.fire({
+            title: "Apa Anda Yakin ?",
+            text: "Menghapus Banner Ini!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "YA, Hapus!",
+            cancelButtonText: "Batal",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                e.target.submit();
+            }
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,108 @@
+{% extends 'dashboard.html.twig' %}
+
+{% block title %} Banner Carousel {% endblock %}
+
+{% block body %}
+<div class="content">
+    <div class="container-fluid">
+        <div class="py-3 d-flex align-items-sm-center flex-sm-row flex-column">
+            <div class="flex-grow-1">
+                <h4 class="fs-18 fw-semibold m-0">Banner & Carousel</h4>
+            </div>
+
+            <div class="text-end">
+                <ol class="breadcrumb m-0 py-0">
+                    <li class="breadcrumb-item active">
+                        <a href="{{ path('app_banner_index') }}">Banner</a>
+                    </li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {% for message in app.flashes('error') %}
+        <div class="alert alert-danger">
+            {{ message }}
+        </div>
+    {% endfor %}
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <div class="d-flex align-items-center">
+                        <h5 class="card-title mb-0">Data Banner</h5>
+
+                        <div class="ms-auto"> 
+                            {% if has_permission('/banners/add') %}
+                                <a href="{{ path('app_banner_new') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus"></i> Tambah Banner</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table id="table" class="table table-bordered table-striped w-100">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Judul</th>
+                                    <th>Urutan</th>
+                                    <th>Status</th>
+                                    <th>Gambar</th>
+                                    <th>Aksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+$(document).ready(function () {
+    var table = $('#table').DataTable({
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: '{{ path('app_banner_ajax') }}',
+            type: 'GET',
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('Error fetching data: ' + jqXHR.responseText);
+            }
+        },
+        columns: [
+            { data: 'no', orderable: false, searchable: false },
+            { data: 'title' },
+            { data: 'sortOrder' },
+            { data: 'isActive', orderable: false, searchable: false },
+            { 
+                data: 'image',
+                orderable: false,
+                searchable: false,
+                render: function(data, type, row) {
+                    if (!data) return '<span class="text-muted">Tidak ada</span>';
+                    var imageUrl = '{{ asset(image_directory ~ "/") }}' + data;
+                    return '<img src="' + imageUrl + '" class="img-thumbnail" style="width: 80px; height: 40px; object-fit: cover;">';
+                }
+            },
+            { data: 'actions', orderable: false, searchable: false }
+        ],
+        pageLength: 10,
+        order: [[2, 'asc']],
+        responsive: true
+    });
+});
+</script>
+{% endblock %}

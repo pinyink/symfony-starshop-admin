@@ -59,6 +59,11 @@
                                 <a href="{{ path('app_settings_index') }}" class="tp-link">Settings</a>
                             </li>
                             {% endif %}
+                            {% if is_granted('banners') %}
+                            <li>
+                                <a href="{{ path('app_banner_index') }}" class="tp-link">Banner / Carousel</a>
+                            </li>
+                            {% endif %}
                         </ul>
                     </div>
                 </li>

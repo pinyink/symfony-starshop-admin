@@ -1,0 +1,4 @@
+<a href="{{ path('app_banner_show', {id : id}) }}" class="btn btn-sm btn-primary text-white mr-1"><i class="fa fa-eye"></i> Detail</a>
+{% if has_permission('/banners/update') %}
+<a href="{{ path('app_banner_edit', {id : id}) }}" class="btn btn-sm btn-info text-white"><i class="fa fa-edit"></i> Edit</a>
+{% endif %}

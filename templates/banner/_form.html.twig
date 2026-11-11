@@ -1,0 +1,38 @@
+{{ form_start(form) }}
+    <div class="mb-3">
+        {{ form_label(form.title, null, {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.title, {'attr': {'class': 'form-control', 'placeholder': 'Masukkan judul banner...'}}) }}
+        {{ form_errors(form.title) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.sortOrder, null, {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.sortOrder, {'attr': {'class': 'form-control', 'placeholder': '0'}}) }}
+        {{ form_errors(form.sortOrder) }}
+    </div>
+
+    <div class="mb-3 form-check">
+        {{ form_widget(form.isActive, {'attr': {'class': 'form-check-input'}}) }}
+        {{ form_label(form.isActive, null, {'label_attr': {'class': 'form-check-label'}}) }}
+        {{ form_errors(form.isActive) }}
+    </div>
+
+    <div class="mb-3">
+        {{ form_label(form.image, null, {'label_attr': {'class': 'form-label'}}) }}
+        {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+        {{ form_errors(form.image) }}
+        <small class="text-muted">Format: JPG, JPEG, PNG, WEBP. Max size: 4MB.</small>
+    </div>
+
+    {% if banner.image is defined and banner.image %}
+    <div class="mb-3">
+        <label class="form-label d-block">Gambar Saat Ini:</label>
+        <img src="{{ asset(image_directory ~ banner.image) }}" alt="Banner" class="img-thumbnail" style="max-height: 150px;">
+    </div>
+    {% endif %}
+
+    <div class="d-flex gap-2">
+        <button class="btn btn-primary"><i class="fa fa-save"></i> {{ button_label|default('Simpan') }}</button>
+        <a href="{{ path('app_banner_index') }}" class="btn btn-secondary"><i class="fa fa-arrow-left"></i> Kembali</a>
+    </div>
+{{ form_end(form) }}
