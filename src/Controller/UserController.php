@@ -72,9 +72,16 @@ final class UserController extends AbstractController
             }
             $user->setEmail($data['user']['email']);
             $user->setFullname($data['user']['fullname']);
-            $user->setRoles(['ROLE_USER']);
+            
             $role = $roleManager->getNode($data['user']['roles']);
             $user->addRbacRole($role);
+
+            // Jika role code atau description mengandung 'admin', set Symfony security role ke ROLE_ADMIN
+            if ($role && (stripos($role->getCode(), 'admin') !== false || stripos($role->getDescription(), 'admin') !== false)) {
+                $user->setRoles(['ROLE_ADMIN', 'ROLE_USER']);
+            } else {
+                $user->setRoles(['ROLE_USER']);
+            }
             $entityManager->persist($user);
             $entityManager->flush();
             $this->addFlash('success', 'Tambah Data Berhasil');
@@ -128,6 +135,13 @@ final class UserController extends AbstractController
                 // Jika roleManager butuh ID atau object, sesuaikan kebutuhan method getNode / addRbacRole
                 $roleNode = $roleManager->getNode($selectedRoleEntity->getId());
                 $user->addRbacRole($roleNode);
+
+                // Update Symfony security role berdasarkan RBAC role
+                if ($roleNode && (stripos($roleNode->getCode(), 'admin') !== false || stripos($roleNode->getDescription(), 'admin') !== false)) {
+                    $user->setRoles(['ROLE_ADMIN', 'ROLE_USER']);
+                } else {
+                    $user->setRoles(['ROLE_USER']);
+                }
             }
 
             $entityManager->flush();
