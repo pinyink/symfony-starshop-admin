@@ -2,6 +2,11 @@
 
 ## Changelog & Development History
 
+### [2026-11-11] — Banner Module
+- **Banner Module:** Added `Banner` entity, repository, migration, `BannerController`, and `BannerType` to manage promotional banners with image upload, sort order, and active/inactive status.
+- **Seeder & RBAC:** Added `app:seed-banners-permission` command and integrated permission checks (`/banners/read`, `/banners/add`, `/banners/edit`, `/banners/delete`) with `olivier127/rbac-bundle`.
+- **Sidebar:** Added Banners menu item in the dashboard sidebar.
+
 ### [2026-11-11] — General Settings Module & Permission Integration
 - **General Settings Module:** Added `Setting` entity, repository, migration, `SettingService`, and `SettingController` to manage app-wide key-value configurations grouped by category with file upload support.
 - **Seeder Commands:** Created `app:seed-settings` and `app:seed-settings-permission` console commands for bootstrapping default settings and RBAC permission nodes.
