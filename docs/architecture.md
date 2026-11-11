@@ -30,7 +30,7 @@ StarShop is a Symfony 7.3 web application designed for e-commerce management, fe
 
 ## 4. Authentication & Authorization Architecture
 - **Authentication:** Form-based login (`app_login`) with password hashing via `PasswordAuthenticatedUserInterface` and session management.
-- **RBAC Authorization:** Managed through `olivier127/rbac-bundle`, associating users with roles and permissions for granular access control.
+- **RBAC Authorization & Voters:** Managed through `olivier127/rbac-bundle` and custom `AdminVoter` (`src/Security/AdminVoter.php`), granting users with `ROLE_ADMIN` full access across all menus and permissions automatically.
 
 ## 5. Frontend & UI Architecture
 - **Asset Management:** Symfony AssetMapper provides native asset compilation without Node.js toolchains.
