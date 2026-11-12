@@ -13,14 +13,14 @@
             </span>
           </div>
           <p class="footer__desc">
-            Situs web resmi Pemerintah Kabupaten Bandung Barat sebagai pusat informasi pelayanan publik, transparansi penyelenggaraan pemerintahan, dan akuntabilitas daerah.
+            {{ setting('landing_footer_desc', 'Situs web resmi Pemerintah Kabupaten Bandung Barat sebagai pusat informasi pelayanan publik, transparansi penyelenggaraan pemerintahan, dan akuntabilitas daerah.') }}
           </p>
           <div class="footer__social" aria-label="Media sosial resmi">
-            <a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
-            <a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
-            <a href="#" aria-label="YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a>
-            <a href="#" aria-label="Twitter X"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
-            <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+            <a href="{{ setting('social_facebook', '#') }}" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+            <a href="{{ setting('social_instagram', '#') }}" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+            <a href="{{ setting('social_youtube', '#') }}" aria-label="YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+            <a href="{{ setting('social_twitter', '#') }}" aria-label="Twitter X"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+            <a href="{{ setting('social_whatsapp', '#') }}" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
           </div>
         </div>
 
@@ -50,7 +50,7 @@
           <h5 class="footer__col-title">Kontak Resmi</h5>
           <div class="footer__contact-item">
             <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
-            <span>Pusat Pemerintahan Kabupaten Bandung Barat, Soreang, Jawa Barat</span>
+            <span>{{ setting('landing_address', 'Pusat Pemerintahan Kabupaten Bandung Barat, Soreang, Jawa Barat') }}</span>
           </div>
           <div class="footer__contact-item">
             <i class="bi bi-telephone-fill" aria-hidden="true"></i>

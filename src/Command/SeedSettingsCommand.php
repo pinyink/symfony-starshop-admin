@@ -38,6 +38,20 @@ class SeedSettingsCommand extends Command
             ['general', 'language', 'id', 'string', true],
             ['email', 'contact_email', 'admin@example.com', 'string', true],
             ['email', 'contact_phone', '+62xxx', 'string', true],
+            ['landing', 'landing_eyebrow', 'Portal Pelayanan Publik Resmi', 'string', true],
+            ['landing', 'landing_hero_title', 'Melayani Warga, Membangun Bandung Barat yang Maju dan Berkelanjutan', 'string', true],
+            ['landing', 'landing_stats_population', '1724500', 'string', true],
+            ['landing', 'landing_stats_districts', '16', 'string', true],
+            ['landing', 'landing_stats_villages', '151', 'string', true],
+            ['landing', 'landing_stats_employees', '12480', 'string', true],
+            ['landing', 'landing_address', 'Pusat Pemerintahan Kabupaten Bandung Barat, Soreang, Jawa Barat', 'string', true],
+            ['landing', 'landing_work_hours', 'Senin–Jumat, 08.00–16.00 WIB', 'string', true],
+            ['landing', 'landing_footer_desc', 'Situs web resmi Pemerintah Kabupaten Bandung Barat sebagai pusat informasi pelayanan publik, transparansi penyelenggaraan pemerintahan, dan akuntabilitas daerah.', 'string', true],
+            ['landing', 'social_facebook', '#', 'string', true],
+            ['landing', 'social_instagram', '#', 'string', true],
+            ['landing', 'social_youtube', '#', 'string', true],
+            ['landing', 'social_twitter', '#', 'string', true],
+            ['landing', 'social_whatsapp', '#', 'string', true],
         ];
 
         $repo = $this->entityManager->getRepository(Setting::class);

@@ -2,6 +2,10 @@
 
 ## Changelog & Development History
 
+### [2026-11-12 (Later - 2)] — Dynamic Landing Page Variables via Settings Module
+- **Landing Page Settings Integration:** Added comprehensive landing page configuration keys (`landing_eyebrow`, `landing_hero_title`, `landing_stats_population`, `landing_stats_districts`, `landing_stats_villages`, `landing_stats_employees`, `landing_address`, `landing_work_hours`, `landing_footer_desc`, `social_facebook`, `social_instagram`, `social_youtube`, `social_twitter`, `social_whatsapp`) to `SeedSettingsCommand`.
+- **Dynamic Partials:** Updated landing partials (`_header`, `_hero`, `_sections`, `_footer`) to consume dynamic values from `SettingService` via Twig `setting()` extension instead of hardcoded strings.
+
 ### [2026-11-12 (Later)] — Landing Page Hero Carousel Slider & Conditional Logic
 - **Hero Carousel Slider:** Implemented Bootstrap 5 carousel in `templates/landing/_hero.html.twig`.
 - **Conditional Banner Logic:** Configured the landing hero to render default government template hero when banner records are empty, and dynamic banner slides when banner records exist.
