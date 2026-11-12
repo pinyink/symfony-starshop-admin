@@ -43,26 +43,41 @@
                     </a>
                     <div class="collapse" id="adminSidebar">
                         <ul class="nav-second-level">
-                            {% if is_granted('ROLE_ADMIN') %}
+                            {% if has_role('/admin') %}
                                 <li>
-                                    <a href="{{ path('app_role_index') }}" class="tp-link">Roles</a>
+                                    <a href="{{ path('app_role_index') }}" class="tp-link">
+                                        Roles
+                                    </a>
                                 </li>
                                 <li>
-                                    <a href="{{ path('app_permission') }}" class="tp-link">Permissions</a>
+                                    <a href="{{ path('app_permission') }}" class="tp-link">
+                                        Permissions
+                                    </a>
                                 </li>
                             {% endif %}
-                            <li>
-                                <a href="{{ path('app_user') }}" class="tp-link">Users</a>
-                            </li>
-                            {% if is_granted('settings') %}
-                            <li>
-                                <a href="{{ path('app_settings_index') }}" class="tp-link">Settings</a>
-                            </li>
+
+                            {% if has_permission('/users/read') %}
+                                <li>
+                                    <a href="{{ path('app_user') }}" class="tp-link">
+                                        Users
+                                    </a>
+                                </li>
                             {% endif %}
-                            {% if is_granted('banners') %}
-                            <li>
-                                <a href="{{ path('app_banner_index') }}" class="tp-link">Banner / Carousel</a>
-                            </li>
+
+                            {% if has_permission('/settings/read') %}
+                                <li>
+                                    <a href="{{ path('app_settings_index') }}" class="tp-link">
+                                        Settings
+                                    </a>
+                                </li>
+                            {% endif %}
+
+                            {% if has_permission('/banners/read') %}
+                                <li>
+                                    <a href="{{ path('app_banner_index') }}" class="tp-link">
+                                        Banner / Carousel
+                                    </a>
+                                </li>
                             {% endif %}
                         </ul>
                     </div>
