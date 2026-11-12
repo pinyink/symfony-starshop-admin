@@ -5,11 +5,13 @@
       <div class="row g-4">
         <div class="col-lg-4">
           <div class="footer__brand">
-            <span class="brand__logo" aria-hidden="true">BB</span>
+            {% if setting('app_logo') %}
+              <img src="{{ asset(setting('app_logo')) }}" alt="Logo" style="max-height: 45px;" class="me-2">
+            {% else %}
+              <span class="brand__logo" aria-hidden="true">BB</span>
+            {% endif %}
             <span class="brand__text">
-              <span class="brand__text-top">Portal Resmi</span>
-              <span class="brand__text-main">{{ setting('app_name', 'Pemerintah Kabupaten Bandung Barat') }}</span>
-              <span class="brand__text-sub">Jawa Barat</span>
+              <span class="brand__text-main text-white">{{ setting('app_name', 'Pemerintah Kabupaten Bandung Barat') }}</span>
             </span>
           </div>
           <p class="footer__desc">
