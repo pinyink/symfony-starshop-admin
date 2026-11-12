@@ -16,10 +16,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Attribute\Route;
+use PhpRbacBundle\Attribute\AccessControl as RBAC;
 
 #[Route('/user')]
 final class UserController extends AbstractController
 {
+    #[RBAC\IsGranted("/users/read")]
     #[Route('/', name: 'app_user', methods:['GET', 'POST'])]
     public function index(Request $request, DataTableFactory $dataTableFactory): Response
     {
@@ -48,6 +50,7 @@ final class UserController extends AbstractController
         ]);
     }
 
+    #[RBAC\IsGranted("/users/add")]
     #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager, UserPasswordHasherInterface $passwordHasher, FileUploader $fileUploader, RoleManager $roleManager)
     {
@@ -94,6 +97,7 @@ final class UserController extends AbstractController
         ]);
     }
 
+    #[RBAC\IsGranted("/users/edit")]
     #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
     public function edit(
         Request $request,
@@ -156,6 +160,7 @@ final class UserController extends AbstractController
         ]);
     }
 
+    #[RBAC\IsGranted("/users/read")]
     #[Route('/{id}/show', name: 'app_user_show', methods: ['GET'])]
     public function show(User $user): Response
     {
@@ -164,6 +169,7 @@ final class UserController extends AbstractController
         ]);
     }
 
+    #[RBAC\IsGranted("/users/delete")]
     #[Route('/{id}/delete', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, EntityManagerInterface $entityManager): Response
     {
