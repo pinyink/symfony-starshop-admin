@@ -28,11 +28,11 @@ final class BannerController extends AbstractController
     public function ajax(Request $request, EntityManagerInterface $entityManager): Response
     {
         $datatable = new Datatable($request);
-        $datatable->setColumns([null, "b.title", "b.sortOrder", "b.isActive", "b.image"])
+        $datatable->setColumns([null, "b.title", "b.description", "b.sortOrder", "b.isActive", "b.image"])
                   ->setOrderColumn('b.id')
                   ->setQueryBuilder(
                       $entityManager->createQueryBuilder()
-                          ->select("b.id, b.title, b.sortOrder, b.isActive, b.image")
+                          ->select("b.id, b.title, b.description, b.sortOrder, b.isActive, b.image")
                           ->from(Banner::class, 'b')
                   )
                   ->setCounterBy('b.id');
@@ -49,6 +49,7 @@ final class BannerController extends AbstractController
                 'no' => $no++,
                 'id' => $row['id'],
                 'title' => $row['title'],
+                'description' => $row['description'] ?? '-',
                 'sortOrder' => $row['sortOrder'] ?? 0,
                 'isActive' => $statusBadge,
                 'image' => $row['image'],

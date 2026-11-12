@@ -2,6 +2,11 @@
 
 ## Changelog & Development History
 
+### [2026-11-12] — Banner Description Field, Modular Landing Page & RBAC Updates
+- **Banner Module Update:** Added `description` field to `Banner` entity, form, database migration, and datatable.
+- **Modular Government Landing Page:** Created modular landing page partials (`_header`, `_hero`, `_sections`, `_footer`) mirroring `public/goverment/index.html` with dynamic connection to setting and banner modules, plus dynamic login/dashboard header buttons.
+- **UserController & RBAC:** Integrated `UserController` with PhpRbac / `olivier127/rbac-bundle` and `AdminVoter`.
+
 ### [2026-11-11] — Banner Module
 - **Banner Module:** Added `Banner` entity, repository, migration, `BannerController`, and `BannerType` to manage promotional banners with image upload, sort order, and active/inactive status.
 - **Seeder & RBAC:** Added `app:seed-banners-permission` command and integrated permission checks (`/banners/read`, `/banners/add`, `/banners/edit`, `/banners/delete`) with `olivier127/rbac-bundle`.

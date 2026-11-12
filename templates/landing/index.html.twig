@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ setting('app_name', 'StarShop') }} — Portal Layanan &amp; Informasi Publik{% endblock %}
+
+{% block stylesheets %}
+  {{ parent() }}
+  <link rel="stylesheet" href="{{ asset('goverment/css/styles.css') }}">
+{% endblock %}
+
+{% block body %}
+  <!-- Header Partial -->
+  {% include 'landing/_header.html.twig' %}
+
+  <!-- Main Content / Sections -->
+  <main id="main">
+    {% include 'landing/_hero.html.twig' %}
+    {% include 'landing/_sections.html.twig' %}
+  </main>
+
+  <!-- Footer Partial -->
+  {% include 'landing/_footer.html.twig' %}
+
+  {% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('goverment/js/main.js') }}"></script>
+  {% endblock %}
+{% endblock %}

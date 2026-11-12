@@ -1,0 +1,127 @@
+{# Landing Page Header Partial - Based on government template #}
+<a href="#main" class="skip-link">Lewati ke konten utama</a>
+
+<!-- 1. TOP INFORMATION BAR -->
+<div class="topbar" role="complementary" aria-label="Informasi kontak dan aksesibilitas">
+  <div class="container">
+    <div class="topbar__info">
+      <span class="topbar__info-item">
+        <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+        <a href="mailto:{{ setting('contact_email', 'info@bandungbaratkab.go.id') }}">{{ setting('contact_email', 'info@bandungbaratkab.go.id') }}</a>
+      </span>
+      <span class="topbar__info-item">
+        <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+        <a href="tel:{{ setting('contact_phone', '(022) 8782-0000') }}">{{ setting('contact_phone', '(022) 8782-0000') }}</a>
+      </span>
+      <span class="topbar__info-item">
+        <i class="bi bi-clock-fill" aria-hidden="true"></i>
+        <span>Senin–Jumat, 08.00–16.00 WIB</span>
+      </span>
+    </div>
+    <div class="topbar__right">
+      <div class="dropdown">
+        <button class="topbar__access" data-a11y="larger" aria-pressed="false" aria-label="Perbesar ukuran teks">
+          <i class="bi bi-type" aria-hidden="true"></i><span>A+A</span>
+        </button>
+      </div>
+      <button class="topbar__access" data-a11y="contrast" aria-pressed="false" aria-label="Aktifkan mode kontras tinggi">
+        <i class="bi bi-circle-half" aria-hidden="true"></i><span>Kontras</span>
+      </button>
+      <button class="topbar__access" data-a11y="reset" aria-label="Set ulang pengaturan aksesibilitas">
+        <i class="bi bi-arrow-counterclockwise" aria-hidden="true"></i><span>Reset</span>
+      </button>
+      <span class="topbar__social" aria-label="Media sosial">
+        <a href="#" aria-label="Facebook resmi"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+        <a href="#" aria-label="Instagram resmi"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+        <a href="#" aria-label="YouTube resmi"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="X / Twitter resmi"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+      </span>
+      {% if app.user %}
+        <a href="{{ path('app_dashboard') }}" class="btn btn-sm btn-gov-gold ms-3"><i class="bi bi-speedometer2 me-1"></i> Dashboard</a>
+      {% else %}
+        <a href="{{ path('app_login') }}" class="btn btn-sm btn-gov-gold ms-3"><i class="bi bi-box-arrow-in-right me-1"></i> Login</a>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+<!-- 2. MAIN HEADER -->
+<header class="header" role="banner">
+  <div class="container">
+    <div class="header__main">
+      <a href="{{ path('app_landing') }}" class="brand" aria-label="Beranda Portal Pemerintah">
+        {% if setting('app_logo') %}
+          <img src="{{ asset(setting('app_logo')) }}" alt="Logo" style="max-height: 45px;" class="me-2">
+        {% else %}
+          <span class="brand__logo" aria-hidden="true">BB</span>
+        {% endif %}
+        <span class="brand__text">
+          <span class="brand__text-top">Portal Resmi</span>
+          <span class="brand__text-main">{{ setting('app_name', 'Pemerintah Kabupaten Bandung Barat') }}</span>
+          <span class="brand__text-sub">Jawa Barat</span>
+        </span>
+      </a>
+
+      <div class="header__nav-wrap">
+        <nav aria-label="Navigasi utama">
+          <ul class="main-nav">
+            <li class="main-nav__item"><a class="main-nav__link is-active" href="#beranda">Beranda</a></li>
+            <li class="main-nav__item has-mega">
+              <a class="main-nav__link" href="#profil">Profil <i class="bi bi-chevron-down" aria-hidden="true"></i></a>
+              <div class="mega" role="menu" aria-label="Submenu Profil">
+                <div>
+                  <div class="mega__group-title">Tentang Institusi</div>
+                  <a class="mega__link" href="#tentang"><i class="bi bi-building"></i><span>Profil Pemerintahan</span></a>
+                  <a class="mega__link" href="#visi-misi"><i class="bi bi-bullseye"></i><span>Visi &amp; Misi</span></a>
+                  <a class="mega__link" href="#pimpinan"><i class="bi bi-person-badge"></i><span>Pimpinan Daerah</span></a>
+                  <a class="mega__link" href="#struktur"><i class="bi bi-diagram-3"></i><span>Struktur Organisasi</span></a>
+                </div>
+                <div>
+                  <div class="mega__group-title">Wilayah &amp; Demografi</div>
+                  <a class="mega__link" href="#"><i class="bi bi-map"></i><span>Profil Wilayah</span></a>
+                  <a class="mega__link" href="#"><i class="bi bi-people"></i><span>Demografi Penduduk</span></a>
+                  <a class="mega__link" href="#"><i class="bi bi-geo-alt"></i><span>Peta Administrasi</span></a>
+                  <a class="mega__link" href="#"><i class="bi bi-book"></i><span>Sejarah Daerah</span></a>
+                </div>
+              </div>
+            </li>
+            <li class="main-nav__item has-mega">
+              <a class="main-nav__link" href="#layanan">Layanan <i class="bi bi-chevron-down" aria-hidden="true"></i></a>
+              <div class="mega" role="menu" aria-label="Submenu Layanan">
+                <div>
+                  <div class="mega__group-title">Layanan Administrasi</div>
+                  <a class="mega__link" href="#layanan"><i class="bi bi-person-vcard"></i><span>Kependudukan &amp; Catatan Sipil</span></a>
+                  <a class="mega__link" href="#layanan"><i class="bi bi-file-earmark-text"></i><span>Perizinan Online</span></a>
+                  <a class="mega__link" href="#layanan"><i class="bi bi-house-door"></i><span>Layanan Pertanahan</span></a>
+                  <a class="mega__link" href="#layanan"><i class="bi bi-mortarboard"></i><span>Pendidikan &amp; Beasiswa</span></a>
+                </div>
+                <div>
+                  <div class="mega__group-title">Layanan Publik</div>
+                  <a class="mega__link" href="#pengaduan"><i class="bi bi-megaphone"></i><span>Pengaduan Masyarakat</span></a>
+                  <a class="mega__link" href="#ppid"><i class="bi bi-info-circle"></i><span>Permohonan Informasi</span></a>
+                  <a class="mega__link" href="#"><i class="bi bi-download"></i><span>Pusat Unduh Dokumen</span></a>
+                  <a class="mega__link" href="#"><i class="bi bi-calendar-check"></i><span>Reservasi Layanan</span></a>
+                </div>
+              </div>
+            </li>
+            <li class="main-nav__item"><a class="main-nav__link" href="#berita">Berita</a></li>
+            <li class="main-nav__item"><a class="main-nav__link" href="#pengumuman">Pengumuman</a></li>
+            <li class="main-nav__item"><a class="main-nav__link" href="#informasi">Info Publik</a></li>
+            <li class="main-nav__item"><a class="main-nav__link" href="#statistik">Data</a></li>
+            <li class="main-nav__item"><a class="main-nav__link" href="#kontak">Kontak</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="header__tools">
+        <form class="header__search" role="search" data-search-form aria-label="Pencarian situs">
+          <i class="bi bi-search" aria-hidden="true"></i>
+          <input type="search" placeholder="Cari informasi, layanan…" aria-label="Pencarian">
+        </form>
+        <button class="header__toggle" id="mobileToggle" aria-label="Buka menu navigasi" aria-controls="mobileDrawer" aria-expanded="false">
+          <i class="bi bi-list" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

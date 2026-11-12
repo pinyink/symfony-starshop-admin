@@ -1,0 +1,79 @@
+{# Landing Page Footer Partial - Based on government template #}
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__top">
+      <div class="row g-4">
+        <div class="col-lg-4">
+          <div class="footer__brand">
+            <span class="brand__logo" aria-hidden="true">BB</span>
+            <span class="brand__text">
+              <span class="brand__text-top">Portal Resmi</span>
+              <span class="brand__text-main">{{ setting('app_name', 'Pemerintah Kabupaten Bandung Barat') }}</span>
+              <span class="brand__text-sub">Jawa Barat</span>
+            </span>
+          </div>
+          <p class="footer__desc">
+            Situs web resmi Pemerintah Kabupaten Bandung Barat sebagai pusat informasi pelayanan publik, transparansi penyelenggaraan pemerintahan, dan akuntabilitas daerah.
+          </p>
+          <div class="footer__social" aria-label="Media sosial resmi">
+            <a href="#" aria-label="Facebook"><i class="bi bi-facebook" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram" aria-hidden="true"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube" aria-hidden="true"></i></a>
+            <a href="#" aria-label="Twitter X"><i class="bi bi-twitter-x" aria-hidden="true"></i></a>
+            <a href="#" aria-label="WhatsApp"><i class="bi bi-whatsapp" aria-hidden="true"></i></a>
+          </div>
+        </div>
+
+        <div class="col-sm-6 col-lg-2">
+          <h5 class="footer__col-title">Navigasi</h5>
+          <ul class="footer__links">
+            <li><a href="#beranda">Beranda</a></li>
+            <li><a href="#profil">Profil Daerah</a></li>
+            <li><a href="#layanan">Layanan Publik</a></li>
+            <li><a href="#berita">Berita Terkini</a></li>
+            <li><a href="#pengumuman">Pengumuman</a></li>
+          </ul>
+        </div>
+
+        <div class="col-sm-6 col-lg-3">
+          <h5 class="footer__col-title">Layanan &amp; Informasi</h5>
+          <ul class="footer__links">
+            <li><a href="#ppid">PPID (Keterbukaan Informasi)</a></li>
+            <li><a href="#pengaduan">Layanan Pengaduan (LAPOR!)</a></li>
+            <li><a href="#informasi">JDIH Produk Hukum</a></li>
+            <li><a href="#statistik">Transparansi Anggaran (APBD)</a></li>
+            <li><a href="#statistik">Data Statistik Daerah</a></li>
+          </ul>
+        </div>
+
+        <div class="col-lg-3">
+          <h5 class="footer__col-title">Kontak Resmi</h5>
+          <div class="footer__contact-item">
+            <i class="bi bi-geo-alt-fill" aria-hidden="true"></i>
+            <span>Pusat Pemerintahan Kabupaten Bandung Barat, Soreang, Jawa Barat</span>
+          </div>
+          <div class="footer__contact-item">
+            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+            <a href="tel:{{ setting('contact_phone', '(022) 8782-0000') }}">{{ setting('contact_phone', '(022) 8782-0000') }}</a>
+          </div>
+          <div class="footer__contact-item">
+            <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+            <a href="mailto:{{ setting('contact_email', 'info@bandungbaratkab.go.id') }}">{{ setting('contact_email', 'info@bandungbaratkab.go.id') }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div>
+        &copy; <script>document.write(new Date().getFullYear())</script> <strong>{{ setting('app_name', 'Pemerintah Kabupaten Bandung Barat') }}</strong>. Hak Cipta Dilindungi Undang-Undang.
+      </div>
+      <div class="footer__bottom-links">
+        <a href="#">Ketentuan Penggunaan</a>
+        <a href="#">Kebijakan Privasi</a>
+        <a href="#">Peta Situs</a>
+        <a href="{{ path('app_login') }}">Login Sistem</a>
+      </div>
+    </div>
+  </div>
+</footer>

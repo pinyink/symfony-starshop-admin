@@ -13,11 +13,12 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use PhpRbacBundle\Attribute\AccessControl as RBAC;
 
 #[Route('/settings')]
-#[IsGranted('ROLE_USER')]
 final class SettingController extends AbstractController
 {
+    #[RBAC\IsGranted("/settings/read")]
     #[Route('/', name: 'app_settings_index', methods: ['GET', 'POST'])]
     public function index(Request $request, EntityManagerInterface $entityManager, SettingService $settingService, FileUploader $fileUploader): Response
     {
