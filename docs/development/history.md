@@ -2,7 +2,9 @@
 
 ## Changelog & Development History
 
-### [2026-11-12] — Banner Description Field, Modular Landing Page & RBAC Updates
+### [2026-11-12 (Later)] — Landing Page Hero Carousel Slider & Conditional Logic
+- **Hero Carousel Slider:** Implemented Bootstrap 5 carousel in `templates/landing/_hero.html.twig`.
+- **Conditional Banner Logic:** Configured the landing hero to render default government template hero when banner records are empty, and dynamic banner slides when banner records exist.
 - **Banner Module Update:** Added `description` field to `Banner` entity, form, database migration, and datatable.
 - **Modular Government Landing Page:** Created modular landing page partials (`_header`, `_hero`, `_sections`, `_footer`) mirroring `public/goverment/index.html` with dynamic connection to setting and banner modules, plus dynamic login/dashboard header buttons.
 - **UserController & RBAC:** Integrated `UserController` with PhpRbac / `olivier127/rbac-bundle` and `AdminVoter`.

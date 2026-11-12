@@ -1,9 +1,8 @@
-{% extends 'base.html.twig' %}
+{% extends 'landing.html.twig' %}
 
-{% block title %}{{ setting('app_name', 'StarShop') }} — Portal Layanan &amp; Informasi Publik{% endblock %}
+{% block title %}{{ setting('app_name', 'Portal Resmi Pemerintah Daerah') }} — Portal Layanan &amp; Informasi Publik{% endblock %}
 
 {% block stylesheets %}
-  {{ parent() }}
   <link rel="stylesheet" href="{{ asset('goverment/css/styles.css') }}">
 {% endblock %}
 
@@ -19,9 +18,8 @@
 
   <!-- Footer Partial -->
   {% include 'landing/_footer.html.twig' %}
+{% endblock %}
 
-  {% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('goverment/js/main.js') }}"></script>
-  {% endblock %}
+{% block javascripts %}
+  <script src="{{ asset('goverment/js/main.js') }}"></script>
 {% endblock %}

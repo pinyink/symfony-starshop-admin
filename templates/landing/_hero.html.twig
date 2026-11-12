@@ -1,66 +1,78 @@
-{# 3. HERO PARTIAL - Integrated with Banner Module & Government Template CSS #}
-<section class="hero" id="beranda" aria-labelledby="hero-title">
+{# 3. HERO SLIDER PARTIAL - Conditional: If banners exist, show banner slides. If empty, show default gov template slide. #}
+<section class="hero-slider-section" id="beranda">
   {% set banners = banner_repository is defined and banner_repository is not null ? banner_repository.findBy({isActive: true}, {sortOrder: 'ASC'}) : [] %}
-  {% if banners|length > 0 %}
-    {% set firstBanner = banners[0] %}
-    <div class="hero__bg" style="background-image:url('{{ asset(firstBanner.image) }}')" aria-hidden="true"></div>
-  {% else %}
-    <div class="hero__bg" style="background-image:url('{{ asset('goverment/assets/img/hero.jpg') }}')" aria-hidden="true"></div>
-  {% endif %}
   
-  <div class="hero__overlay" aria-hidden="true"></div>
-  <div class="container">
-    <div class="hero__inner">
-      <span class="hero__eyebrow">
-        <i class="bi bi-shield-check" aria-hidden="true"></i>
-        Portal Pelayanan Publik Resmi
-      </span>
-      <h1 class="hero__title" id="hero-title">
-        {% if banners|length > 0 %}
-          {{ banners[0].title }}
-        {% else %}
-          Melayani Warga, Membangun <span class="hero__title-accent">{{ setting('app_name', 'Bandung Barat') }}</span> yang Maju dan Berkelanjutan
-        {% endif %}
-      </h1>
-      <p class="hero__lead">
-        {% if banners|length > 0 and banners[0].description %}
-          {{ banners[0].description }}
-        {% else %}
-          {{ setting('app_description', 'Selamat datang di portal resmi Pemerintah Daerah. Akses layanan publik online, informasi pemerintahan, transparansi anggaran daerah, serta berita terkini dalam satu situs yang terpadu dan dapat diandalkan.') }}
-        {% endif %}
-      </p>
-      <div class="hero__cta">
-        <a href="#layanan" class="btn btn-gov-gold btn-lg">
-          <i class="bi bi-grid-3x3-gap me-2" aria-hidden="true"></i>Akses Layanan Publik
-        </a>
-        <a href="#profil" class="btn btn-gov-outline btn-lg">
-          <i class="bi bi-info-circle me-2" aria-hidden="true"></i>Profil Pemerintahan
-        </a>
-      </div>
-
-      <form class="hero__search" role="search" data-search-form aria-label="Cari informasi publik">
-        <input type="search" placeholder="Cari layanan, regulasi, berita, atau dokumen publik…" aria-label="Cari informasi publik">
-        <button type="submit"><i class="bi bi-search" aria-hidden="true"></i> Cari</button>
-      </form>
-
-      <div class="hero__meta">
-        <div class="hero__meta-item">
-          <span class="hero__meta-num">16</span>
-          <span class="hero__meta-label">Kecamatan</span>
-        </div>
-        <div class="hero__meta-item">
-          <span class="hero__meta-num">151</span>
-          <span class="hero__meta-label">Desa &amp; Kelurahan</span>
-        </div>
-        <div class="hero__meta-item">
-          <span class="hero__meta-num">±1,7 jt</span>
-          <span class="hero__meta-label">Penduduk</span>
-        </div>
-        <div class="hero__meta-item">
-          <span class="hero__meta-num">24/7</span>
-          <span class="hero__meta-label">Layanan Online</span>
-        </div>
-      </div>
+  <div id="govHeroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="6000">
+    <div class="carousel-indicators">
+      {% if banners|length > 0 %}
+        {% for banner in banners %}
+          <button type="button" data-bs-target="#govHeroCarousel" data-bs-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active" aria-current="true"{% endif %} aria-label="Slide {{ loop.index }}"></button>
+        {% endfor %}
+      {% else %}
+        <button type="button" data-bs-target="#govHeroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      {% endif %}
     </div>
+
+    <div class="carousel-inner">
+      {% if banners|length > 0 %}
+        <!-- BANNERS EXIST: Render banner slides -->
+        {% for banner in banners %}
+          <div class="carousel-item {% if loop.first %}active{% endif %}">
+            <section class="hero mb-0" aria-labelledby="hero-title-{{ loop.index }}">
+              <div class="hero__bg" style="background-image:url('{{ asset(image_directory ~ banner.image) }}')" aria-hidden="true"></div>
+              <div class="hero__overlay" aria-hidden="true"></div>
+              <div class="container">
+                <div class="hero__inner">
+                  <span class="hero__eyebrow">
+                    <i class="bi bi-shield-check" aria-hidden="true"></i>
+                    Portal Pelayanan Publik Resmi
+                  </span>
+                  <h1 class="hero__title" id="hero-title-{{ loop.index }}">
+                    {{ banner.title }}
+                  </h1>
+                  <p class="hero__lead">
+                    {{ banner.description ?? setting('app_description', 'Selamat datang di portal resmi Pemerintah Daerah. Akses layanan publik online, informasi pemerintahan, transparansi anggaran daerah, serta berita terkini dalam satu situs yang terpadu dan dapat diandalkan.') }}
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+        {% endfor %}
+      {% else %}
+        <!-- NO BANNERS: Render default government template slide -->
+        <div class="carousel-item active">
+          <section class="hero mb-0" aria-labelledby="hero-title-default">
+            <div class="hero__bg" style="background-image:url('{{ asset('goverment/assets/img/hero.jpg') }}')" aria-hidden="true"></div>
+            <div class="hero__overlay" aria-hidden="true"></div>
+            <div class="container">
+              <div class="hero__inner">
+                <span class="hero__eyebrow">
+                  <i class="bi bi-shield-check" aria-hidden="true"></i>
+                  Portal Pelayanan Publik Resmi
+                </span>
+                <h1 class="hero__title" id="hero-title-default">
+                  Melayani Warga, Membangun <span class="hero__title-accent">{{ setting('app_name', 'Bandung Barat') }}</span> yang Maju dan Berkelanjutan
+                </h1>
+                <p class="hero__lead">
+                  {{ setting('app_description', 'Selamat datang di portal resmi Pemerintah Kabupaten Bandung Barat. Akses layanan publik online, informasi pemerintahan, transparansi anggaran daerah, serta berita terkini dalam satu situs yang terpadu dan dapat diandalkan.') }}
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      {% endif %}
+    </div>
+
+    {% if banners|length > 1 %}
+      <!-- Carousel Controls (only show if multiple slides) -->
+      <button class="carousel-control-prev" type="button" data-bs-target="#govHeroCarousel" data-bs-slide="prev" aria-label="Sebelumnya">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Sebelumnya</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#govHeroCarousel" data-bs-slide="next" aria-label="Berikutnya">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Berikutnya</span>
+      </button>
+    {% endif %}
   </div>
 </section>

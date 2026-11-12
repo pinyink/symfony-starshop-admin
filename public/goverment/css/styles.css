@@ -558,6 +558,7 @@ img { max-width: 100%; height: auto; display: block; }
   background: var(--gov-navy-900);
   color: #fff;
   overflow: hidden;
+  height: calc(100vh - 120px);
 }
 .hero__bg {
   position: absolute; inset: 0;
